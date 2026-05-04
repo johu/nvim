@@ -13,11 +13,18 @@ lua/
     keymaps.lua      # Key mappings
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
+  plugins/
+    colorscheme.lua   # TokyoNight color scheme (moon accent)
 ```
 
 `init.lua` requires all config files from `lua/config/`. No plugin manager configured yet.
 
 ## Features
+
+### Color Scheme
+
+- **TokyoNight** (moon accent) — soft purple/blue tones on dark background
+- Transparent background enabled
 
 ### Editor Settings
 
