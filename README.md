@@ -16,7 +16,11 @@ lua/
     autocmds.lua     # Auto commands
   plugins/
     init.lua         # Loads plugin modules
-    colorscheme.lua   # TokyoNight color scheme (moon accent)
+    colorscheme.lua  # TokyoNight color scheme (moon accent)
+    completion.lua   # blink.cmp and snippet support
+    formatting.lua   # conform.nvim formatter integration
+    lsp.lua          # Mason and LSP tool installation
+    syntax.lua       # Tree-sitter and autotag support
 ```
 
 `init.lua` stays minimal and delegates to `lua/config/init.lua` and
@@ -42,6 +46,9 @@ lua/
 ### Key Mappings
 
 Leader key: `Space`
+
+Mappings use `desc` metadata, so native `:map` output stays readable and
+future key-hint plugins can reuse same descriptions.
 
 #### Window Management
 
@@ -106,16 +113,24 @@ Leader key: `Space`
 - Highlight on yank
 - Markdown files: textwidth=80, formatoptions set for prose
 
+### Syntax and Completion
+
+- **Tree-sitter** for syntax-aware parsing
+- **nvim-ts-autotag** for paired tag editing in markup/component files
+- **blink.cmp** with LuaSnip and friendly-snippets
+
 ## Formatting
 
+- **conform.nvim** for format-on-save and manual formatting
 - **StyLua** configured via `.stylua.toml`
-- Standardized Lua code style
+- Additional formatters can be used when installed on the system
 
 ## Requirements
 
 - Neovim 0.12+ (uses `vim.pack` for plugin management)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
+- Rust toolchain (`cargo`) to build `blink.cmp`
 
 ## Installation
 

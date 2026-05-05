@@ -1,0 +1,60 @@
+vim.pack.add {
+  { src = 'https://github.com/L3MON4D3/LuaSnip' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
+  { src = 'https://github.com/saghen/blink.lib' },
+  { src = 'https://github.com/saghen/blink.cmp' },
+}
+
+vim.api.nvim_create_autocmd('PackChanged', {
+  desc = 'Build blink.cmp after install/update',
+  group = vim.api.nvim_create_augroup('blink-build', { clear = true }),
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'blink.cmp' and (kind == 'install' or kind == 'update') then
+      vim.notify('Building blink.cmp...', vim.log.levels.INFO)
+      local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path }):wait()
+      if obj.code == 0 then
+        vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+      else
+        vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+      end
+    end
+  end,
+})
+
+require('luasnip.loaders.from_vscode').lazy_load()
+
+require('blink.cmp').setup {
+  keymap = {
+    preset = 'enter',
+    ['<C-y>'] = { 'select_and_accept' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+  },
+  appearance = {
+    nerd_font_variant = 'mono',
+  },
+  completion = {
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 200,
+    },
+    menu = {
+      auto_show = true,
+      draw = {
+        treesitter = { 'lsp' },
+        columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind' } },
+      },
+    },
+  },
+  cmdline = {
+    completion = {
+      ghost_text = { enabled = true },
+    },
+  },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
+  signature = { enabled = true },
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
+}

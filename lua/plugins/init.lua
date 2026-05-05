@@ -1,1 +1,5 @@
 require 'plugins.colorscheme'
+require 'plugins.completion'
+require 'plugins.formatting'
+require 'plugins.lsp'
+require 'plugins.syntax'
