@@ -235,6 +235,14 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **nvim-ts-autotag** for paired tag editing in markup/component files
 - **blink.cmp** with LuaSnip and friendly-snippets
 
+### LSP
+
+- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls`,
+  and `marksman`
+- `gr*` mappings restore fzf-backed references, definitions, implementations,
+  type definitions, rename, and code actions on attach
+- LSP document highlights and inlay hint toggling are restored
+
 ## Formatting
 
 - **conform.nvim** for format-on-save and manual formatting

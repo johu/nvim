@@ -1,4 +1,3 @@
--- Preview and render Markdown inside Neovim when plain text is not enough.
 vim.pack.add {
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
   { src = 'https://github.com/iamcco/markdown-preview.nvim' },
