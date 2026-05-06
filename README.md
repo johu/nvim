@@ -1,7 +1,37 @@
 # Neovim Configuration
 
-A minimal Neovim configuration built from scratch, migrated from lazy.nvim.
-Prioritizes native Neovim features over plugins.
+A minimal Neovim configuration built from scratch. Prioritizes native
+Neovim features over plugins.
+
+## Requirements
+
+- Neovim 0.12+ (uses `vim.pack` for plugin management)
+- Terminal with true color support
+- Nerd Font recommended (for diagnostic signs)
+- Node.js required for `markdown-preview.nvim`
+- Rust toolchain (`cargo`) to build `blink.cmp`
+
+## Installation
+
+- Backup your old config before
+
+```bash
+mv ~/.config/nvim ~/.config/nvim-backup
+```
+
+- Remove state & cache files (or backup at your choice)
+
+```bash
+rm -rf ~/.local/share/nvim \
+       ~/.cache/nvim \
+       ~/.local/state/nvim
+```
+
+- Clone the repository
+
+```bash
+git clone https://github.com/johu/nvim.git ~/.config/nvim
+```
 
 ## Structure
 
@@ -114,53 +144,53 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 #### File Navigation
 
-| Mapping      | Description              |
-| ------------ | ------------------------ |
-| `-`          | Open file explorer       |
-| `<leader>ff` | Find files               |
-| `<leader>fg` | Git files                |
-| `<leader>fb` | Buffers                  |
-| `<leader>fu` | Builtin pickers          |
-| `<leader><leader>` | Find files (alt)     |
-| `<leader>,` | Switch buffer (MRU)      |
+| Mapping            | Description         |
+| ------------------ | ------------------- |
+| `-`                | Open file explorer  |
+| `<leader>ff`       | Find files          |
+| `<leader>fg`       | Git files           |
+| `<leader>fb`       | Buffers             |
+| `<leader>fu`       | Builtin pickers     |
+| `<leader><leader>` | Find files (alt)    |
+| `<leader>,`        | Switch buffer (MRU) |
 
 #### Harpoon (Fast Navigation)
 
-| Mapping       | Description             |
-| ------------- | ----------------------- |
-| `<leader>H`   | Add file to harpoon     |
-| `<leader>h`   | Toggle harpoon menu     |
-| `<A-h>`       | Go to harpoon file 1    |
-| `<A-j>`       | Go to harpoon file 2    |
-| `<A-k>`       | Go to harpoon file 3    |
-| `<A-l>`       | Go to harpoon file 4    |
+| Mapping     | Description          |
+| ----------- | -------------------- |
+| `<leader>H` | Add file to harpoon  |
+| `<leader>h` | Toggle harpoon menu  |
+| `<A-h>`     | Go to harpoon file 1 |
+| `<A-j>`     | Go to harpoon file 2 |
+| `<A-k>`     | Go to harpoon file 3 |
+| `<A-l>`     | Go to harpoon file 4 |
 
 #### Search and Diagnostics
 
-| Mapping      | Description                      |
-| ------------ | -------------------------------- |
-| `<leader>sg` | Grep (live)                      |
-| `<leader>sw` | Grep current word                |
-| `<leader>sW` | Grep current WORD                |
-| `<leader>sR` | Resume last picker               |
-| `<leader>st` | Search todos/fixes               |
-| `<leader>sb` | Search buffer                    |
-| `<leader>sd` | Diagnostics (document)           |
-| `<leader>sD` | Diagnostics (workspace)          |
-| `<leader>/` | Grep (alt)                       |
-| `<leader>:` | Command history                  |
-| `<leader>fk` | Keymaps                          |
-| `<leader>fh` | Help tags                        |
-| `<leader>fr` | Recent files                     |
-| `<leader>ec` | Neovim config files              |
-| `<leader>ep` | Plugin packages                  |
+| Mapping      | Description             |
+| ------------ | ----------------------- |
+| `<leader>sg` | Grep (live)             |
+| `<leader>sw` | Grep current word       |
+| `<leader>sW` | Grep current WORD       |
+| `<leader>sR` | Resume last picker      |
+| `<leader>st` | Search todos/fixes      |
+| `<leader>sb` | Search buffer           |
+| `<leader>sd` | Diagnostics (document)  |
+| `<leader>sD` | Diagnostics (workspace) |
+| `<leader>/`  | Grep (alt)              |
+| `<leader>:`  | Command history         |
+| `<leader>fk` | Keymaps                 |
+| `<leader>fh` | Help tags               |
+| `<leader>fr` | Recent files            |
+| `<leader>ec` | Neovim config files     |
+| `<leader>ep` | Plugin packages         |
 
 #### Git
 
-| Mapping      | Description          |
-| ------------ | -------------------- |
-| `<leader>gc` | Git commits          |
-| `<leader>gs` | Git status           |
+| Mapping      | Description |
+| ------------ | ----------- |
+| `<leader>gc` | Git commits |
+| `<leader>gs` | Git status  |
 
 #### Sessions
 
@@ -248,21 +278,3 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **conform.nvim** for format-on-save and manual formatting
 - **StyLua** configured via `.stylua.toml`
 - Additional formatters can be used when installed on the system
-
-## Requirements
-
-- Neovim 0.12+ (uses `vim.pack` for plugin management)
-- Terminal with true color support
-- Nerd Font recommended (for diagnostic signs)
-- Node.js required for `markdown-preview.nvim`
-- Rust toolchain (`cargo`) to build `blink.cmp`
-
-## Installation
-
-```bash
-git clone <repo-url> ~/.config/nvim
-```
-
-## License
-
-MIT
