@@ -112,7 +112,6 @@ opt.redrawtime = 10000
 opt.maxmempattern = 20000
 
 -- decrease mapped sequence wait time
--- displays which-key popup sooner
 opt.timeoutlen = 300
 
 -- rounded borders in floating windows
@@ -123,7 +122,6 @@ opt.spelllang = { 'en_us' }
 opt.spell = true
 
 vim.g.autoformat = true
-vim.g.trouble_lualine = true
 vim.g.markdown_recommended_style = 0
 
 opt.jumpoptions = 'view'

@@ -23,6 +23,7 @@ lua/
     lsp.lua          # Mason and LSP tool installation
     navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
+    ui.lua           # mini.clue, statusline, and tabline
 ```
 
 `init.lua` stays minimal and delegates to `lua/config/init.lua` and
@@ -50,7 +51,7 @@ lua/
 Leader key: `Space`
 
 Mappings use `desc` metadata, so native `:map` output stays readable and
-future key-hint plugins can reuse same descriptions.
+`mini.clue` can surface grouped hints from same descriptions.
 
 #### Window Management
 
@@ -157,6 +158,13 @@ future key-hint plugins can reuse same descriptions.
 - Custom signs for each severity level
 - Underline only for errors
 - Virtual text shows source when multiple sources
+
+### UI
+
+- **mini.clue** shows grouped key hints for leader keys, windows, registers,
+  marks, and built-in motions
+- **mini.statusline** handles mode/status display in a compact statusline
+- **mini.tabline** adds icon-aware buffer tabs across top
 
 ### Auto Commands
 
