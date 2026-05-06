@@ -23,6 +23,7 @@ lua/
     editor.lua       # mini.nvim editing helpers
     formatting.lua   # conform.nvim formatter integration
     lsp.lua          # Mason and LSP tool installation
+    markdown.lua     # Markdown rendering and browser preview
     navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
     ui.lua           # mini.clue, statusline, and tabline
@@ -56,6 +57,7 @@ lua/
 - **mini.surround** adds, changes, and deletes surroundings
 - **mini.jump2d** provides single-character jump labels on `<leader>j` in
   normal, visual, and operator-pending modes
+- **grug-far** provides a focused search-and-replace UI on `<leader>sr`
 
 ### Key Mappings
 
@@ -118,6 +120,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>ff` | Find files               |
 | `<leader>fg` | Git files                |
 | `<leader>fb` | Buffers                  |
+| `<leader>fu` | Builtin pickers          |
 | `<leader><leader>` | Find files (alt)     |
 | `<leader>,` | Switch buffer (MRU)      |
 
@@ -139,6 +142,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>sg` | Grep (live)                      |
 | `<leader>sw` | Grep current word                |
 | `<leader>sW` | Grep current WORD                |
+| `<leader>sR` | Resume last picker               |
 | `<leader>st` | Search todos/fixes               |
 | `<leader>sb` | Search buffer                    |
 | `<leader>sd` | Diagnostics (document)           |
@@ -173,6 +177,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | ------------ | ---------------------- |
 | `<ESC>`      | Clear search highlight |
 | `<leader>cx` | Source current file    |
+| `<leader>cp` | Markdown preview       |
 | `<leader>pu` | Update plugins         |
 | `<leader>qq` | Quit all               |
 
@@ -211,9 +216,22 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **Oil.nvim** for file explorer with `-` keymap
 - **fzf-lua** for fuzzy find across files, buffers, git, diagnostics, and more
 
+### Search and Replace
+
+- **grug-far** adds scoped search-and-replace with a transient UI that defaults
+  to the current file extension on `<leader>sr`
+
+### Markdown
+
+- **render-markdown.nvim** improves in-editor Markdown rendering
+- **markdown-preview.nvim** toggles a browser preview with `<leader>cp`
+
 ### Syntax and Completion
 
 - **Tree-sitter** for syntax-aware parsing
+- **nvim-treesitter-textobjects** restores textobjects and parameter swapping
+- Tree-sitter incremental selection uses `<Enter>` to expand and `<BS>` to
+  shrink
 - **nvim-ts-autotag** for paired tag editing in markup/component files
 - **blink.cmp** with LuaSnip and friendly-snippets
 
@@ -228,6 +246,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Neovim 0.12+ (uses `vim.pack` for plugin management)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
+- Node.js required for `markdown-preview.nvim`
 - Rust toolchain (`cargo`) to build `blink.cmp`
 
 ## Installation

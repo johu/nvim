@@ -51,6 +51,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   └── ui.lua
 │   └── plugins/
 │       ├── init.lua
+│       ├── markdown.lua
 └── nvim-pack-lock.json
 ```
 
