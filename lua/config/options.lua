@@ -33,7 +33,7 @@ opt.termguicolors = true
 opt.background = 'dark'
 opt.showmatch = true
 opt.matchtime = 2
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.showmode = false -- mode handled by status line
 opt.pumheight = 10
 opt.pumblend = 10
@@ -87,9 +87,11 @@ opt.splitbelow = true
 opt.splitkeep = 'screen'
 
 -- command-line
+opt.showcmdloc = 'statusline'
 opt.wildmenu = true
 opt.wildmode = 'longest:full,full'
 opt.wildignore:append { '*.o', '*.obj', '*.pyc', '*.class', '*.jar' }
+opt.shortmess:append { W = true, I = true, c = true, C = true }
 
 -- whitespace characters
 opt.list = true
@@ -128,7 +130,6 @@ opt.jumpoptions = 'view'
 opt.laststatus = 3
 opt.linebreak = true
 opt.shiftround = true
--- opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 -- file types
 vim.filetype.add {

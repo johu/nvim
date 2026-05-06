@@ -12,6 +12,7 @@ lua/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
+    ui.lua           # Built-in history and command-line helpers
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
@@ -47,6 +48,7 @@ lua/
 - Undo files enabled
 - Mouse support enabled
 - System clipboard integration (except in SSH sessions)
+- Compact built-in command-line UI with message history
 
 ### Editing
 
@@ -95,6 +97,10 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>d`          | Delete without yanking             |
 | `<leader>j`          | Jump with `mini.jump2d` (n/x/o)    |
 | `<leader>Y`          | Yank to system clipboard           |
+| `[u` / `]u`          | Older/newer undo state             |
+| `<leader>uh`         | Undo history                       |
+| `<leader>um`         | Message history                    |
+| `<leader>uc`         | Command-line window                |
 
 #### Navigation
 
@@ -184,6 +190,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
   marks, and built-in motions
 - **mini.statusline** handles mode/status display in a compact statusline
 - **mini.tabline** adds icon-aware buffer tabs across top
+- Native Neovim UI keeps the command line compact and exposes message history
+  without `noice.nvim`
 
 ### Sessions
 

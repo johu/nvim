@@ -47,7 +47,8 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   ├── diagnostics.lua
 │   │   ├── health.lua
 │   │   ├── keymaps.lua
-│   │   └── options.lua
+│   │   ├── options.lua
+│   │   └── ui.lua
 │   └── plugins/
 │       ├── init.lua
 └── nvim-pack-lock.json

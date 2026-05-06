@@ -2,6 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local ui = require 'config.ui'
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -57,3 +58,10 @@ keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
 -- quit
 keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+
+-- built-in UI and history
+keymap.set('n', '<leader>uc', ui.open_command_line_window, { desc = 'Command-line Window' })
+keymap.set('n', '<leader>uh', ui.show_undo_history, { desc = 'Undo History' })
+keymap.set('n', '<leader>um', ui.show_messages, { desc = 'Message History' })
+keymap.set('n', '[u', 'g-', { desc = 'Older Text State' })
+keymap.set('n', ']u', 'g+', { desc = 'Newer Text State' })
