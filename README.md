@@ -16,10 +16,12 @@ lua/
     autocmds.lua     # Auto commands
   plugins/
     init.lua         # Loads plugin modules
+    base.lua         # Base utilities (plenary, mini.nvim)
     colorscheme.lua  # TokyoNight color scheme (moon accent)
     completion.lua   # blink.cmp and snippet support
     formatting.lua   # conform.nvim formatter integration
     lsp.lua          # Mason and LSP tool installation
+    navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
 ```
 
@@ -91,6 +93,54 @@ future key-hint plugins can reuse same descriptions.
 | `<C-u>`   | Move up with cursor centered    |
 | `n` / `N` | Search next/prev with centering |
 
+#### File Navigation
+
+| Mapping      | Description              |
+| ------------ | ------------------------ |
+| `-`          | Open file explorer       |
+| `<leader>ff` | Find files               |
+| `<leader>fg` | Git files                |
+| `<leader>fb` | Buffers                  |
+| `<leader><leader>` | Find files (alt)     |
+| `<leader>,` | Switch buffer (MRU)      |
+
+#### Harpoon (Fast Navigation)
+
+| Mapping       | Description             |
+| ------------- | ----------------------- |
+| `<leader>H`   | Add file to harpoon     |
+| `<leader>h`   | Toggle harpoon menu     |
+| `<A-h>`       | Go to harpoon file 1    |
+| `<A-j>`       | Go to harpoon file 2    |
+| `<A-k>`       | Go to harpoon file 3    |
+| `<A-l>`       | Go to harpoon file 4    |
+
+#### Search and Diagnostics
+
+| Mapping      | Description                      |
+| ------------ | -------------------------------- |
+| `<leader>sg` | Grep (live)                      |
+| `<leader>sw` | Grep current word                |
+| `<leader>sW` | Grep current WORD                |
+| `<leader>st` | Search todos/fixes               |
+| `<leader>sb` | Search buffer                    |
+| `<leader>sd` | Diagnostics (document)           |
+| `<leader>sD` | Diagnostics (workspace)          |
+| `<leader>/` | Grep (alt)                       |
+| `<leader>:` | Command history                  |
+| `<leader>fk` | Keymaps                          |
+| `<leader>fh` | Help tags                        |
+| `<leader>fr` | Recent files                     |
+| `<leader>ec` | Neovim config files              |
+| `<leader>ep` | Plugin packages                  |
+
+#### Git
+
+| Mapping      | Description          |
+| ------------ | -------------------- |
+| `<leader>gc` | Git commits          |
+| `<leader>gs` | Git status           |
+
 #### Other
 
 | Mapping      | Description            |
@@ -112,6 +162,12 @@ future key-hint plugins can reuse same descriptions.
 
 - Highlight on yank
 - Markdown files: textwidth=80, formatoptions set for prose
+
+### Navigation
+
+- **Harpoon 2** for fast file jumping with Alt+hjkl shortcuts
+- **Oil.nvim** for file explorer with `-` keymap
+- **fzf-lua** for fuzzy find across files, buffers, git, diagnostics, and more
 
 ### Syntax and Completion
 
