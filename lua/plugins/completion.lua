@@ -24,7 +24,9 @@ vim.api.nvim_create_autocmd('PackChanged', {
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
-require('blink.cmp').setup {
+local cmp = require 'blink.cmp'
+cmp.build():wait(60000)
+cmp.setup {
   keymap = {
     preset = 'enter',
     ['<C-y>'] = { 'select_and_accept' },
