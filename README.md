@@ -25,6 +25,7 @@ lua/
     navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
     ui.lua           # mini.clue, statusline, and tabline
+    util.lua         # session workflow helpers
 ```
 
 `init.lua` stays minimal and delegates to `lua/config/init.lua` and
@@ -151,6 +152,15 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>gc` | Git commits          |
 | `<leader>gs` | Git status           |
 
+#### Sessions
+
+| Mapping      | Description             |
+| ------------ | ----------------------- |
+| `<leader>qs` | Restore current session |
+| `<leader>qS` | Select session          |
+| `<leader>ql` | Restore last session    |
+| `<leader>qd` | Detach current session  |
+
 #### Other
 
 | Mapping      | Description            |
@@ -174,6 +184,13 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
   marks, and built-in motions
 - **mini.statusline** handles mode/status display in a compact statusline
 - **mini.tabline** adds icon-aware buffer tabs across top
+
+### Sessions
+
+- **mini.sessions** replaces persistence.nvim for save, restore, and session
+  selection flows
+- Sessions autowrite by default, and `<leader>qd` detaches current session
+  before write
 
 ### Auto Commands
 
