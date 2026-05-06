@@ -177,6 +177,11 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>sb` | Search buffer           |
 | `<leader>sd` | Diagnostics (document)  |
 | `<leader>sD` | Diagnostics (workspace) |
+| `<leader>snl` | Last UI message        |
+| `<leader>snh` | UI message history     |
+| `<leader>sna` | All UI messages        |
+| `<leader>snd` | Dismiss UI messages    |
+| `<leader>snt` | Pick UI message        |
 | `<leader>/`  | Grep (alt)              |
 | `<leader>:`  | Command history         |
 | `<leader>fk` | Keymaps                 |
@@ -208,8 +213,10 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<ESC>`      | Clear search highlight |
 | `<leader>cx` | Source current file    |
 | `<leader>cp` | Markdown preview       |
+| `<leader>n`  | Notification history   |
 | `<leader>pu` | Update plugins         |
 | `<leader>qq` | Quit all               |
+| `<leader>un` | Dismiss notifications  |
 
 ### Diagnostics
 
@@ -221,12 +228,13 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### UI
 
+- **snacks.nvim** restores a startup dashboard when Neovim opens without files
 - **mini.clue** shows grouped key hints for leader keys, windows, registers,
   marks, and built-in motions
-- **mini.statusline** handles mode/status display in a compact statusline
+- **lualine.nvim** restores the richer branch/diff/diagnostics/LSP statusline
 - **mini.tabline** adds icon-aware buffer tabs across top
-- Native Neovim UI keeps the command line compact and exposes message history
-  without `noice.nvim`
+- **noice.nvim** restores a floating command-line UI, notification history, and
+  richer message views
 
 ### Sessions
 
