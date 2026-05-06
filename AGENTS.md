@@ -42,12 +42,14 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 ├── init.lua
 ├── lua/
 │   ├── config/
+│   │   ├── init.lua
 │   │   ├── autocmds.lua
 │   │   ├── diagnostics.lua
 │   │   ├── health.lua
 │   │   ├── keymaps.lua
 │   │   └── options.lua
 │   └── plugins/
+│       ├── init.lua
 └── nvim-pack-lock.json
 ```
 
@@ -56,6 +58,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 - `init.lua` is the single entry point and should remain concise.
 
 - `lua/config/` contains core Neovim configuration:
+  - `init.lua` → loads core config modules
   - `options.lua` → `vim.opt`
   - `keymaps.lua` → `vim.keymap.set`
   - `autocmds.lua` → `vim.api.nvim_create_autocmd`
@@ -63,6 +66,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
   - `health.lua` → custom checks (optional but encouraged)
 
 - `lua/plugins/` contains:
+  - `init.lua` → loads plugin modules
   - Plugin declarations via `vim.pack`
   - Plugin-specific configuration
 

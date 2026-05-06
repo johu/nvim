@@ -9,15 +9,18 @@ Prioritizes native Neovim features over plugins.
 init.lua
 lua/
   config/
+    init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
+    init.lua         # Loads plugin modules
     colorscheme.lua   # TokyoNight color scheme (moon accent)
 ```
 
-`init.lua` requires all config files from `lua/config/`. No plugin manager configured yet.
+`init.lua` stays minimal and delegates to `lua/config/init.lua` and
+`lua/plugins/init.lua`.
 
 ## Features
 
