@@ -19,6 +19,7 @@ lua/
     base.lua         # Base utilities (plenary, mini.nvim)
     colorscheme.lua  # TokyoNight color scheme (moon accent)
     completion.lua   # blink.cmp and snippet support
+    editor.lua       # mini.nvim editing helpers
     formatting.lua   # conform.nvim formatter integration
     lsp.lua          # Mason and LSP tool installation
     navigation.lua   # Harpoon, Oil, fzf-lua
@@ -45,6 +46,13 @@ lua/
 - Undo files enabled
 - Mouse support enabled
 - System clipboard integration (except in SSH sessions)
+
+### Editing
+
+- **mini.pairs** inserts matching delimiters while typing
+- **mini.surround** adds, changes, and deletes surroundings
+- **mini.jump2d** provides single-character jump labels on `<leader>j` in
+  normal, visual, and operator-pending modes
 
 ### Key Mappings
 
@@ -84,6 +92,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `K` (visual)         | Move lines up                      |
 | `<leader>p` (visual) | Paste without overwriting register |
 | `<leader>d`          | Delete without yanking             |
+| `<leader>j`          | Jump with `mini.jump2d` (n/x/o)    |
 | `<leader>Y`          | Yank to system clipboard           |
 
 #### Navigation
