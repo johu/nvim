@@ -8,7 +8,7 @@ Neovim features over plugins.
 - Neovim 0.12+ (uses `vim.pack` for plugin management)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
-- Node.js required for `markdown-preview.nvim`
+- `curl` required for the first `markdown-preview.nvim` launch
 - Rust toolchain (`cargo`) to build `blink.cmp`
 
 ## Installation
@@ -167,28 +167,28 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 #### Search and Diagnostics
 
-| Mapping      | Description             |
-| ------------ | ----------------------- |
-| `<leader>sg` | Grep (live)             |
-| `<leader>sw` | Grep current word       |
-| `<leader>sW` | Grep current WORD       |
-| `<leader>sR` | Resume last picker      |
-| `<leader>st` | Search todos/fixes      |
-| `<leader>sb` | Search buffer           |
-| `<leader>sd` | Diagnostics (document)  |
-| `<leader>sD` | Diagnostics (workspace) |
-| `<leader>snl` | Last UI message        |
-| `<leader>snh` | UI message history     |
-| `<leader>sna` | All UI messages        |
-| `<leader>snd` | Dismiss UI messages    |
-| `<leader>snt` | Pick UI message        |
-| `<leader>/`  | Grep (alt)              |
-| `<leader>:`  | Command history         |
-| `<leader>fk` | Keymaps                 |
-| `<leader>fh` | Help tags               |
-| `<leader>fr` | Recent files            |
-| `<leader>ec` | Neovim config files     |
-| `<leader>ep` | Plugin packages         |
+| Mapping       | Description             |
+| ------------- | ----------------------- |
+| `<leader>sg`  | Grep (live)             |
+| `<leader>sw`  | Grep current word       |
+| `<leader>sW`  | Grep current WORD       |
+| `<leader>sR`  | Resume last picker      |
+| `<leader>st`  | Search todos/fixes      |
+| `<leader>sb`  | Search buffer           |
+| `<leader>sd`  | Diagnostics (document)  |
+| `<leader>sD`  | Diagnostics (workspace) |
+| `<leader>snl` | Last UI message         |
+| `<leader>snh` | UI message history      |
+| `<leader>sna` | All UI messages         |
+| `<leader>snd` | Dismiss UI messages     |
+| `<leader>snt` | Pick UI message         |
+| `<leader>/`   | Grep (alt)              |
+| `<leader>:`   | Command history         |
+| `<leader>fk`  | Keymaps                 |
+| `<leader>fh`  | Help tags               |
+| `<leader>fr`  | Recent files            |
+| `<leader>ec`  | Neovim config files     |
+| `<leader>ep`  | Plugin packages         |
 
 #### Git
 
