@@ -214,6 +214,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>cx` | Source current file    |
 | `<leader>cp` | Markdown preview       |
 | `<leader>n`  | Notification history   |
+| `<leader>pc` | Cleanup plugins        |
 | `<leader>pu` | Update plugins         |
 | `<leader>qq` | Quit all               |
 | `<leader>un` | Dismiss notifications  |

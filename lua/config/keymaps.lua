@@ -12,6 +12,7 @@ keymap.set('n', '<leader>cx', '<cmd>source %<CR>', { desc = 'Source File' })
 
 -- plugin manager
 keymap.set('n', '<leader>pu', '<cmd>PackUpdate<CR>', { desc = 'Update Plugins' })
+keymap.set('n', '<leader>pc', '<cmd>PackClean<CR>', { desc = 'Cleanup Plugins' })
 
 -- numbers
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' })
