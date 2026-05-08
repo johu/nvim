@@ -149,3 +149,6 @@ vim.filetype.add {
     ['%.env%.[%w_.-]+'] = 'dotenv',
   },
 }
+
+-- undo tree
+vim.cmd 'packadd nvim.undotree'

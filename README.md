@@ -133,6 +133,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>uh`         | Undo history                       |
 | `<leader>um`         | Message history                    |
 | `<leader>uc`         | Command-line window                |
+| `<leader>ut`         | Open undo tree                     |
 
 #### Navigation
 
