@@ -1,8 +1,10 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/L3MON4D3/LuaSnip' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets' },
-  { src = 'https://github.com/saghen/blink.lib' },
-  { src = 'https://github.com/saghen/blink.cmp' },
+  { src = gh 'L3MON4D3/LuaSnip' },
+  { src = gh 'rafamadriz/friendly-snippets' },
+  { src = gh 'saghen/blink.lib' },
+  { src = gh 'saghen/blink.cmp' },
 }
 
 vim.api.nvim_create_autocmd('PackChanged', {

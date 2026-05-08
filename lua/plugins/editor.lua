@@ -1,6 +1,8 @@
+local gh = require('vim-pack').gh
+
 -- Search and replace across files with previews and scoped filters.
 vim.pack.add {
-  { src = 'https://github.com/MagicDuck/grug-far.nvim' },
+  { src = gh 'MagicDuck/grug-far.nvim' },
 }
 
 require('mini.pairs').setup()

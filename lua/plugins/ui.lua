@@ -1,9 +1,11 @@
+local gh = require('vim-pack').gh
+
 -- Dashboard, cmdline UI, and message history are worth the extra dependencies.
 vim.pack.add {
-  { src = 'https://github.com/folke/snacks.nvim' },
-  { src = 'https://github.com/folke/noice.nvim' },
-  { src = 'https://github.com/MunifTanjim/nui.nvim' },
-  { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+  { src = gh 'folke/snacks.nvim' },
+  { src = gh 'folke/noice.nvim' },
+  { src = gh 'MunifTanjim/nui.nvim' },
+  { src = gh 'nvim-lualine/lualine.nvim' },
 }
 
 local miniclue = require 'mini.clue'
@@ -40,7 +42,7 @@ require('snacks').setup {
         { icon = ' ', key = 'g', desc = 'Find Text', action = "<cmd>lua require('fzf-lua').live_grep()<cr>" },
         { icon = ' ', key = 'r', desc = 'Recent Files', action = "<cmd>lua require('fzf-lua').oldfiles()<cr>" },
         { icon = ' ', key = 'c', desc = 'Config', action = "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.stdpath('config') })<cr>" },
-        { icon = ' ', key = 's', desc = 'Restore Session', action = "<cmd>lua MiniSessions.read()<cr>" },
+        { icon = ' ', key = 's', desc = 'Restore Session', action = '<cmd>lua MiniSessions.read()<cr>' },
         { icon = '󰏔 ', key = 'p', desc = 'Plugins', action = ':PackUpdate' },
         { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
       },

@@ -1,7 +1,9 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/ThePrimeagen/harpoon', version = 'harpoon2' },
-  { src = 'https://github.com/stevearc/oil.nvim' },
-  { src = 'https://github.com/ibhagwan/fzf-lua' },
+  { src = gh 'ThePrimeagen/harpoon', version = 'harpoon2' },
+  { src = gh 'stevearc/oil.nvim' },
+  { src = gh 'ibhagwan/fzf-lua' },
 }
 
 local harpoon = require 'harpoon'

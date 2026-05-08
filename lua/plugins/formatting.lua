@@ -1,5 +1,7 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/stevearc/conform.nvim' },
+  { src = gh 'stevearc/conform.nvim' },
 }
 
 local conform = require 'conform'

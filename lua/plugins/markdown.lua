@@ -1,6 +1,8 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
-  { src = 'https://github.com/iamcco/markdown-preview.nvim' },
+  { src = gh 'MeanderingProgrammer/render-markdown.nvim' },
+  { src = gh 'iamcco/markdown-preview.nvim' },
 }
 
 require('render-markdown').setup {}

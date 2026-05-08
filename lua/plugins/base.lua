@@ -1,6 +1,8 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/nvim-lua/plenary.nvim' },
-  { src = 'https://github.com/nvim-mini/mini.nvim', version = 'main' },
+  { src = gh 'nvim-lua/plenary.nvim' },
+  { src = gh 'nvim-mini/mini.nvim', version = 'main' },
 }
 
 require('mini.icons').setup {

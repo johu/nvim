@@ -1,6 +1,8 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
   {
-    src = 'https://github.com/folke/tokyonight.nvim',
+    src = gh 'folke/tokyonight.nvim',
   },
 }
 

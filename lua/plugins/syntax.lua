@@ -1,7 +1,9 @@
+local gh = require('vim-pack').gh
+
 vim.pack.add {
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
-  { src = 'https://github.com/windwp/nvim-ts-autotag' },
+  { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' },
+  { src = gh 'nvim-treesitter/nvim-treesitter-textobjects' },
+  { src = gh 'windwp/nvim-ts-autotag' },
 }
 
 require('nvim-treesitter').setup {
