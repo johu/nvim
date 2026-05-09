@@ -176,6 +176,10 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>sR`  | Resume last picker      |
 | `<leader>st`  | Search todos/fixes      |
 | `<leader>sb`  | Search buffer           |
+| `<leader>cd`  | Diagnostic float        |
+| `]d` / `[d`   | Next/prev diagnostic    |
+| `]e` / `[e`   | Next/prev error         |
+| `]w` / `[w`   | Next/prev warning       |
 | `<leader>sd`  | Diagnostics (document)  |
 | `<leader>sD`  | Diagnostics (workspace) |
 | `<leader>snl` | Last UI message         |
@@ -227,6 +231,9 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Custom signs for each severity level
 - Underline only for errors
 - Virtual text shows source when multiple sources
+- Line highlighting for each severity (ERROR, WARN, INFO, HINT)
+- DAP breakpoint sign definition for debugger support
+- Navigation keymaps: `]d`/`[d` (all), `]e`/`[e` (errors), `]w`/`[w` (warnings), `<leader>cd` (float)
 
 ### UI
 
