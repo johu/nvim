@@ -5,8 +5,6 @@ vim.pack.add {
   { src = gh 'MagicDuck/grug-far.nvim' },
 }
 
-require('mini.pairs').setup()
-
 require('mini.surround').setup()
 
 require('mini.jump2d').setup {

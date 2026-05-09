@@ -57,6 +57,15 @@ keymap.set('n', '<leader>Y', [["+Y]], opts)
 -- leader d delete wont remember as yanked/clipboard when delete pasting
 keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
+-- auto close pairs
+-- map("i", "'", "''<left>") -- commented out - smart!
+keymap.set('i', '`', '``<left>')
+keymap.set('i', '"', '""<left>')
+keymap.set('i', '(', '()<left>')
+keymap.set('i', '[', '[]<left>')
+keymap.set('i', '{', '{}<left>')
+keymap.set('i', '<', '<><left>')
+
 -- quit
 keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 

@@ -83,7 +83,7 @@ lua/
 
 ### Editing
 
-- **mini.pairs** inserts matching delimiters while typing
+- Native keymaps auto-close pairs while typing
 - **mini.surround** adds, changes, and deletes surroundings
 - **mini.jump2d** provides single-character jump labels on `<leader>j` in
   normal, visual, and operator-pending modes
