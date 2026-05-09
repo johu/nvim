@@ -1,4 +1,5 @@
 local gh = require('vim-pack').gh
+local map = vim.keymap.set
 
 -- Search and replace across files with previews and scoped filters.
 vim.pack.add {
@@ -13,13 +14,13 @@ require('mini.jump2d').setup {
   },
 }
 
-vim.keymap.set({ 'n', 'x', 'o' }, '<leader>j', function()
+map({ 'n', 'x', 'o' }, '<leader>j', function()
   MiniJump2d.start(MiniJump2d.builtin_opts.single_character)
 end, { desc = 'Jump' })
 
 require('grug-far').setup { headerMaxWidth = 80 }
 
-vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
+map({ 'n', 'v' }, '<leader>sr', function()
   local ext = vim.bo.buftype == '' and vim.fn.expand '%:e' or nil
 
   require('grug-far').open {

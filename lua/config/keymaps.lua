@@ -3,78 +3,78 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 local ui = require 'config.ui'
-local keymap = vim.keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap.set('n', 'x', '"_x') -- delete without saving in buffer
-keymap.set('n', '<ESC>', '<cmd>nohlsearch<CR>')
-keymap.set('n', '<leader>cx', '<cmd>source %<CR>', { desc = 'Source File' })
+map('n', 'x', '"_x') -- delete without saving in buffer
+map('n', '<ESC>', '<cmd>nohlsearch<CR>')
+map('n', '<leader>cx', '<cmd>source %<CR>', { desc = 'Source File' })
 
 -- plugin manager
-keymap.set('n', '<leader>pu', '<cmd>PackUpdate<CR>', { desc = 'Update Plugins' })
-keymap.set('n', '<leader>pc', '<cmd>PackClean<CR>', { desc = 'Cleanup Plugins' })
+map('n', '<leader>pu', '<cmd>PackUpdate<CR>', { desc = 'Update Plugins' })
+map('n', '<leader>pc', '<cmd>PackClean<CR>', { desc = 'Cleanup Plugins' })
 
 -- numbers
-keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' })
-keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' })
+map('n', '<leader>+', '<C-a>', { desc = 'Increment number' })
+map('n', '<leader>-', '<C-x>', { desc = 'Decrement number' })
 
 -- window management
-keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' })
-keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split window horizontally' })
-keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' })
-keymap.set('n', '<leader>wx', '<cmd>close<CR>', { desc = 'Close current split' })
+map('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' })
+map('n', '<leader>wh', '<C-w>s', { desc = 'Split window horizontally' })
+map('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' })
+map('n', '<leader>wx', '<cmd>close<CR>', { desc = 'Close current split' })
 
-keymap.set('n', '<leader><tab><tab>', '<cmd>tabnew<CR>', { desc = 'New Tab' })
-keymap.set('n', '<leader><tab>d', '<cmd>tabclose<CR>', { desc = 'Close Tab' })
-keymap.set('n', '<leader><tab>f', '<cmd>tabfirst<CR>', { desc = 'First Tab' })
-keymap.set('n', '<leader><tab>j', '<cmd>tabnext<CR>', { desc = 'Next Tab' })
-keymap.set('n', '<leader><tab>k', '<cmd>tabprevious<CR>', { desc = 'Previous Tab' })
-keymap.set('n', '<leader><tab>l', '<cmd>tablast<CR>', { desc = 'Last Tab' })
-keymap.set('n', '<leader><tab>o', '<cmd>tabonly<CR>', { desc = 'Close Other Tabs' })
+map('n', '<leader><tab><tab>', '<cmd>tabnew<CR>', { desc = 'New Tab' })
+map('n', '<leader><tab>d', '<cmd>tabclose<CR>', { desc = 'Close Tab' })
+map('n', '<leader><tab>f', '<cmd>tabfirst<CR>', { desc = 'First Tab' })
+map('n', '<leader><tab>j', '<cmd>tabnext<CR>', { desc = 'Next Tab' })
+map('n', '<leader><tab>k', '<cmd>tabprevious<CR>', { desc = 'Previous Tab' })
+map('n', '<leader><tab>l', '<cmd>tablast<CR>', { desc = 'Last Tab' })
+map('n', '<leader><tab>o', '<cmd>tabonly<CR>', { desc = 'Close Other Tabs' })
 
 -- move visual selection
-keymap.set('v', 'J', "<cmd>m '>+1<CR>gv=gv", { desc = 'Move lines down in visual selection' })
-keymap.set('v', 'K', "<cmd>m '<-2<CR>gv=gv", { desc = 'Move lines up in visual selection' })
+map('v', 'J', "<cmd>m '>+1<CR>gv=gv", { desc = 'Move lines down in visual selection' })
+map('v', 'K', "<cmd>m '<-2<CR>gv=gv", { desc = 'Move lines up in visual selection' })
 
 -- remaps for centering
-keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
-keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })
-keymap.set('n', 'n', 'nzzzv')
-keymap.set('n', 'N', 'Nzzzv')
-keymap.set('n', 'J', 'mzJ`z')
+map('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+map('n', 'J', 'mzJ`z')
 
 -- indent visual selection
-keymap.set('v', '<', '<gv', opts)
-keymap.set('v', '>', '>gv', opts)
+map('v', '<', '<gv', opts)
+map('v', '>', '>gv', opts)
 
 -- remap for keeping yank content after paste
-keymap.set('x', '<leader>p', [["_dP]])
-keymap.set('v', 'p', '"_dp', opts)
+map('x', '<leader>p', [["_dP]])
+map('v', 'p', '"_dp', opts)
 
 -- copies or yank to system clipboard
-keymap.set('n', '<leader>Y', [["+Y]], opts)
+map('n', '<leader>Y', [["+Y]], opts)
 
 -- leader d delete wont remember as yanked/clipboard when delete pasting
-keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+map({ 'n', 'v' }, '<leader>d', [["_d]])
 
 -- auto close pairs
 -- map("i", "'", "''<left>") -- commented out - smart!
-keymap.set('i', '`', '``<left>')
-keymap.set('i', '"', '""<left>')
-keymap.set('i', '(', '()<left>')
-keymap.set('i', '[', '[]<left>')
-keymap.set('i', '{', '{}<left>')
-keymap.set('i', '<', '<><left>')
+map('i', '`', '``<left>')
+map('i', '"', '""<left>')
+map('i', '(', '()<left>')
+map('i', '[', '[]<left>')
+map('i', '{', '{}<left>')
+map('i', '<', '<><left>')
 
 -- quit
-keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 
 -- built-in UI and history
-keymap.set('n', '<leader>uc', ui.open_command_line_window, { desc = 'Command-line Window' })
-keymap.set('n', '<leader>uh', ui.show_undo_history, { desc = 'Undo History' })
-keymap.set('n', '<leader>um', ui.show_messages, { desc = 'Message History' })
-keymap.set('n', '<leader>ut', function()
+map('n', '<leader>uc', ui.open_command_line_window, { desc = 'Command-line Window' })
+map('n', '<leader>uh', ui.show_undo_history, { desc = 'Undo History' })
+map('n', '<leader>um', ui.show_messages, { desc = 'Message History' })
+map('n', '<leader>ut', function()
   require('undotree').open()
 end, { desc = 'Open Undo Tree' })
-keymap.set('n', '[u', 'g-', { desc = 'Older Text State' })
-keymap.set('n', ']u', 'g+', { desc = 'Newer Text State' })
+map('n', '[u', 'g-', { desc = 'Older Text State' })
+map('n', ']u', 'g+', { desc = 'Newer Text State' })

@@ -1,4 +1,5 @@
 local gh = require('vim-pack').gh
+local map = vim.keymap.set
 
 vim.pack.add {
   { src = gh 'ThePrimeagen/harpoon', version = 'harpoon2' },
@@ -24,100 +25,100 @@ require('oil').setup {
 
 require('fzf-lua').setup {}
 
-vim.keymap.set('n', '<leader>H', function()
+map('n', '<leader>H', function()
   harpoon:list():add()
 end, { desc = 'Harpoon File' })
 
-vim.keymap.set('n', '<leader>h', function()
+map('n', '<leader>h', function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = 'Harpoon Quick Menu' })
 
 for index, shortcut in ipairs { 'h', 'j', 'k', 'l' } do
-  vim.keymap.set('n', '<A-' .. shortcut .. '>', function()
+  map('n', '<A-' .. shortcut .. '>', function()
     harpoon:list():select(index)
   end, { desc = 'Harpoon to File ' .. index })
 end
 
-vim.keymap.set('n', '-', require('oil').open, { desc = 'Open file explorer' })
+map('n', '-', require('oil').open, { desc = 'Open file explorer' })
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('config-fzf-terminal-keys', { clear = true }),
   pattern = 'fzf',
   callback = function(event)
-    vim.keymap.set('t', '<c-j>', '<c-j>', { buffer = event.buf, nowait = true })
-    vim.keymap.set('t', '<c-k>', '<c-k>', { buffer = event.buf, nowait = true })
+    map('t', '<c-j>', '<c-j>', { buffer = event.buf, nowait = true })
+    map('t', '<c-k>', '<c-k>', { buffer = event.buf, nowait = true })
   end,
 })
 
 local fzf = require 'fzf-lua'
 
-vim.keymap.set('n', '<leader>fb', function()
+map('n', '<leader>fb', function()
   fzf.buffers()
 end, { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>ff', function()
+map('n', '<leader>ff', function()
   fzf.files()
 end, { desc = 'Files' })
-vim.keymap.set('n', '<leader>fg', function()
+map('n', '<leader>fg', function()
   fzf.git_files()
 end, { desc = 'Git Files' })
-vim.keymap.set('n', '<leader>fk', function()
+map('n', '<leader>fk', function()
   fzf.keymaps()
 end, { desc = 'Keymaps' })
-vim.keymap.set('n', '<leader>fh', function()
+map('n', '<leader>fh', function()
   fzf.helptags()
 end, { desc = 'Help' })
-vim.keymap.set('n', '<leader>fr', function()
+map('n', '<leader>fr', function()
   fzf.oldfiles()
 end, { desc = 'Recent' })
-vim.keymap.set('n', '<leader>fu', function()
+map('n', '<leader>fu', function()
   fzf.builtin()
 end, { desc = 'Builtin' })
-vim.keymap.set('n', '<leader>sb', function()
+map('n', '<leader>sb', function()
   fzf.lgrep_curbuf()
 end, { desc = 'Buffer' })
-vim.keymap.set('n', '<leader>sg', function()
+map('n', '<leader>sg', function()
   fzf.live_grep()
 end, { desc = 'Grep' })
-vim.keymap.set('n', '<leader>sw', function()
+map('n', '<leader>sw', function()
   fzf.grep_cword()
 end, { desc = 'Current Word' })
-vim.keymap.set('n', '<leader>sW', function()
+map('n', '<leader>sW', function()
   fzf.grep_cWORD()
 end, { desc = 'Current WORD' })
-vim.keymap.set('n', '<leader>sd', function()
+map('n', '<leader>sd', function()
   fzf.diagnostics_document()
 end, { desc = 'Diagnostics' })
-vim.keymap.set('n', '<leader>sD', function()
+map('n', '<leader>sD', function()
   fzf.diagnostics_workspace()
 end, { desc = 'Diagnostics (Workspace)' })
-vim.keymap.set('n', '<leader>sR', function()
+map('n', '<leader>sR', function()
   fzf.resume()
 end, { desc = 'Resume' })
-vim.keymap.set('n', '<leader>gc', function()
+map('n', '<leader>gc', function()
   fzf.git_commits()
 end, { desc = 'Commits' })
-vim.keymap.set('n', '<leader>gs', function()
+map('n', '<leader>gs', function()
   fzf.git_status()
 end, { desc = 'Status' })
-vim.keymap.set('n', '<leader>ec', function()
+map('n', '<leader>ec', function()
   fzf.files { cwd = vim.fn.stdpath 'config' }
 end, { desc = 'Neovim Config' })
-vim.keymap.set('n', '<leader>ep', function()
+map('n', '<leader>ep', function()
   fzf.files { cwd = vim.fs.joinpath(vim.fn.stdpath 'data', 'site', 'pack', 'core', 'start') }
 end, { desc = 'Packages' })
-vim.keymap.set('n', '<leader>/', function()
+map('n', '<leader>/', function()
   fzf.live_grep()
 end, { desc = '[/] Grep' })
-vim.keymap.set('n', '<leader>,', function()
+map('n', '<leader>,', function()
   fzf.buffers { sort_mru = true, sort_lastused = true }
 end, { desc = 'Switch Buffer' })
-vim.keymap.set('n', '<leader>:', function()
+map('n', '<leader>:', function()
   fzf.command_history()
 end, { desc = 'Command History' })
-vim.keymap.set('n', '<leader><leader>', function()
+map('n', '<leader><leader>', function()
   fzf.files()
 end, { desc = 'Find Files' })
 
-vim.keymap.set('n', '<leader>st', function()
+map('n', '<leader>st', function()
   fzf.live_grep { search = 'TODO|FIX|FIXME' }
 end, { desc = 'Todo/Fix/Fixme' })

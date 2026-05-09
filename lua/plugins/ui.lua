@@ -1,4 +1,5 @@
 local gh = require('vim-pack').gh
+local map = vim.keymap.set
 
 -- Dashboard, cmdline UI, and message history are worth the extra dependencies.
 vim.pack.add {
@@ -158,45 +159,45 @@ require('mini.tabline').setup {
   tabpage_section = 'right',
 }
 
-vim.keymap.set('n', '<leader>n', function()
+map('n', '<leader>n', function()
   require('noice').cmd 'history'
 end, { desc = 'Notification History' })
 
-vim.keymap.set('n', '<leader>un', function()
+map('n', '<leader>un', function()
   require('noice').cmd 'dismiss'
 end, { desc = 'Dismiss Notifications' })
 
-vim.keymap.set('n', '<leader>snl', function()
+map('n', '<leader>snl', function()
   require('noice').cmd 'last'
 end, { desc = 'Noice Last Message' })
 
-vim.keymap.set('n', '<leader>snh', function()
+map('n', '<leader>snh', function()
   require('noice').cmd 'history'
 end, { desc = 'Noice History' })
 
-vim.keymap.set('n', '<leader>sna', function()
+map('n', '<leader>sna', function()
   require('noice').cmd 'all'
 end, { desc = 'Noice All' })
 
-vim.keymap.set('n', '<leader>snd', function()
+map('n', '<leader>snd', function()
   require('noice').cmd 'dismiss'
 end, { desc = 'Dismiss All' })
 
-vim.keymap.set('n', '<leader>snt', function()
+map('n', '<leader>snt', function()
   require('noice').cmd 'pick'
 end, { desc = 'Noice Picker' })
 
-vim.keymap.set('c', '<S-Enter>', function()
+map('c', '<S-Enter>', function()
   require('noice').redirect(vim.fn.getcmdline())
 end, { desc = 'Redirect Cmdline' })
 
-vim.keymap.set({ 'i', 'n', 's' }, '<C-f>', function()
+map({ 'i', 'n', 's' }, '<C-f>', function()
   if not require('noice.lsp').scroll(4) then
     return '<C-f>'
   end
 end, { silent = true, expr = true, desc = 'Scroll Forward' })
 
-vim.keymap.set({ 'i', 'n', 's' }, '<C-b>', function()
+map({ 'i', 'n', 's' }, '<C-b>', function()
   if not require('noice.lsp').scroll(-4) then
     return '<C-b>'
   end
