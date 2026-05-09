@@ -254,8 +254,15 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### Auto Commands
 
-- Highlight on yank
-- Markdown files: textwidth=80, formatoptions set for prose
+- **Highlight on yank** — visual feedback when copying
+- **Checktime** — reload file if changed externally (FocusGained, TermClose, TermLeave)
+- **Resize splits** — auto-equalize on VimResized
+- **Close with `q`** — quick exit for help, qf, lspinfo, checkhealth, gitsigns-blame, etc.
+- **Wrap and spell** — enabled for text/markdown/plaintex/typst/gitcommit
+- **JSON conceal** — conceallevel=0 to prevent quote hiding
+- **Auto-create dirs** — mkdir -p parent on buffer write
+- **Filetype detection** — .env/.env.* (sh), .ejs/.ejs.t (embedded_template), .code-snippets (json)
+- **Markdown** — textwidth=80, formatoptions for prose
 
 ### Navigation
 
