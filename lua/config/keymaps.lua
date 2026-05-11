@@ -24,6 +24,12 @@ map('n', '<leader>wh', '<C-w>s', { desc = 'Split window horizontally' })
 map('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' })
 map('n', '<leader>wx', '<cmd>close<CR>', { desc = 'Close current split' })
 
+-- move between windows with Ctrl+hjkl (like tmux)
+map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
+map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
+map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
+map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
+
 -- tab/shift-tab: like browser tabs, feels natural
 map('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
 map('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
