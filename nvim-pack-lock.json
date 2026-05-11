@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "blink.cmp": {
-      "rev": "d3874d2a13aa19b095bdd10d37a82a8f0aa7cad3",
+      "rev": "2ef3db111181c5eef22a462aa0122349a6027f28",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.lib": {
@@ -21,11 +21,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "cf4c30892644f01ebfb1e248eeca9e259856f9dc",
+      "rev": "44816af2465bb0a17ae0f1f2d8a4f9c3df524fcd",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "grug-far.nvim": {
-      "rev": "21604255d0e8f9968322f61f2b6c09e5efe1285a",
+      "rev": "21790e59dd0109a92a70cb874dd002af186314f5",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "harpoon": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "0c2823e0418f3d9230ff8b201c976e84de1cb401",
+      "rev": "51feb0ada33d18f3c5c71ffb46005dbf8b33bef4",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -50,11 +50,11 @@
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
-      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
+      "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
+      "rev": "a5fda91040763cf9ad70bdce1c656b0f4ba1d16e",
       "src": "https://github.com/nvim-mini/mini.nvim",
       "version": "'main'"
     },
@@ -67,7 +67,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -92,7 +92,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
+      "rev": "629eb9533ec989d9d5c6cab8f3ad5372422c24e0",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
