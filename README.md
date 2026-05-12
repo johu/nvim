@@ -197,6 +197,20 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>ec`  | Neovim config files     |
 | `<leader>ep`  | Plugin packages         |
 
+#### LSP
+
+| Mapping       | Description                  |
+| ------------- | ---------------------------- |
+| `grn`         | Rename symbol                |
+| `gra`         | Code actions                 |
+| `grr`         | References (fzf)             |
+| `gri`         | Implementation (fzf)         |
+| `grd`         | Definition (fzf)             |
+| `grD`         | Declaration                  |
+| `grt`         | Type definition (fzf)        |
+| `gO`          | Document symbols (fzf)       |
+| `gW`          | Workspace symbols (fzf)      |
+
 #### Git
 
 | Mapping      | Description |
