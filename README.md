@@ -254,17 +254,26 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Sessions autowrite by default, and `<leader>qd` detaches current session
   before write
 
-### Auto Commands
+### Auto Commands & User Commands
 
+**Auto Commands:**
 - **Highlight on yank** — visual feedback when copying
 - **Checktime** — reload file if changed externally (FocusGained, TermClose, TermLeave)
+- **Restore cursor position** — resume at last edit location on BufReadPost
 - **Resize splits** — auto-equalize on VimResized
-- **Close with `q`** — quick exit for help, qf, lspinfo, checkhealth, gitsigns-blame, etc.
+- **Help vertical split** — open help pages in vertical split
+- **Man unlisted** — mark man pages as unlisted
+- **Close with `q`** — quick exit for 40+ filetypes (help, qf, lspinfo, checkhealth, gitsigns-blame, etc.)
 - **Wrap and spell** — enabled for text/markdown/plaintex/typst/gitcommit
 - **JSON conceal** — conceallevel=0 to prevent quote hiding
 - **Auto-create dirs** — mkdir -p parent on buffer write
-- **Filetype detection** — .env/.env.* (sh), .ejs/.ejs.t (embedded_template), .code-snippets (json)
+- **Filetype detection** — .env/.env.* (sh), .toml (toml), .ejs/.ejs.t (embedded_template), .code-snippets (json)
 - **Markdown** — textwidth=80, formatoptions for prose
+- **PackChanged hooks** — auto-run TSUpdate on treesitter install/update, build markdown-preview.nvim
+
+**User Commands:**
+- **PackUpdate** — `PackUpdate` or `PackUpdate! pkg1 pkg2` for update with force
+- **PackClean** — remove inactive plugins from disk
 
 ### Navigation
 
