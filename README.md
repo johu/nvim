@@ -38,6 +38,7 @@ git clone https://github.com/johu/nvim.git ~/.config/nvim
 ```
 init.lua
 lua/
+  vim-pack.lua       # vim.pack plugin manager setup
   config/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
@@ -58,10 +59,11 @@ lua/
     syntax.lua       # Tree-sitter and autotag support
     ui.lua           # mini.clue, statusline, and tabline
     util.lua         # session workflow helpers
+nvim-pack-lock.json  # Plugin lock file (commit required)
 ```
 
 `init.lua` stays minimal and delegates to `lua/config/init.lua` and
-`lua/plugins/init.lua`.
+`lua/plugins/init.lua`. Plugin setup via `vim-pack.lua` using native `vim.pack`.
 
 ## Features
 
