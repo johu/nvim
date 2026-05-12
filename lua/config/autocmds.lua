@@ -21,6 +21,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- restore cursor to file position in previous editing session
+vim.api.nvim_create_autocmd('BufReadPost', {
+  callback = function(args)
+    local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+    local line_count = vim.api.nvim_buf_line_count(args.buf)
+    if mark[1] > 0 and mark[1] <= line_count then
+      vim.api.nvim_win_set_cursor(0, mark)
+      -- defer centering slightly so it's applied after render
+      vim.schedule(function()
+        vim.cmd 'normal! zz'
+      end)
+    end
+  end,
+})
+
 -- perform updates when plugin changed
 vim.api.nvim_create_autocmd('PackChanged', {
   group = augroup 'vim-pack-hooks',
@@ -83,6 +98,13 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
     vim.cmd 'tabdo wincmd ='
     vim.cmd('tabnext ' .. current_tab)
   end,
+})
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'help-vertical-split',
+  pattern = 'help',
+  command = 'wincmd L',
 })
 
 -- make it easier to close man-files when opened inline
@@ -187,7 +209,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   end,
 })
 
--- Set filetype for .code-snippets files
+-- set filetype for .code-snippets files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = augroup 'code-snippets-filetype',
   pattern = { '*.code-snippets' },
