@@ -2,7 +2,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local ui = require 'config.ui'
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -142,9 +141,6 @@ map('n', '<leader>tw', '<cmd>set wrap!<CR>', { desc = 'Toggle Wrap', silent = tr
 map('n', 'z0', '1z=', { desc = 'Fix word under cursor' })
 
 -- built-in UI and history
-map('n', '<leader>uc', ui.open_command_line_window, { desc = 'Command-line Window' })
-map('n', '<leader>uh', ui.show_undo_history, { desc = 'Undo History' })
-map('n', '<leader>um', ui.show_messages, { desc = 'Message History' })
 map('n', '<leader>ut', function()
   require('undotree').open()
 end, { desc = 'Open Undo Tree' })

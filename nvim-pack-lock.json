@@ -58,14 +58,6 @@
       "src": "https://github.com/nvim-mini/mini.nvim",
       "version": "'main'"
     },
-    "noice.nvim": {
-      "rev": "7bfd942445fb63089b59f97ca487d605e715f155",
-      "src": "https://github.com/folke/noice.nvim"
-    },
-    "nui.nvim": {
-      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
-      "src": "https://github.com/MunifTanjim/nui.nvim"
-    },
     "nvim-lspconfig": {
       "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -98,6 +90,10 @@
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "tiny-cmdline.nvim": {
+      "rev": "ad58747b955d0743ccfd56e97da1a4c1fac89f58",
+      "src": "https://github.com/rachartier/tiny-cmdline.nvim"
     },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",

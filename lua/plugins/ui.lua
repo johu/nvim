@@ -1,12 +1,19 @@
 local gh = require('vim-pack').gh
-local map = vim.keymap.set
 
--- Dashboard, cmdline UI, and message history are worth the extra dependencies.
+-- Dashboard, richer statusline, and a slimmer cmdline are worth the extra dependencies.
 vim.pack.add {
   { src = gh 'folke/snacks.nvim' },
-  { src = gh 'folke/noice.nvim' },
-  { src = gh 'MunifTanjim/nui.nvim' },
   { src = gh 'nvim-lualine/lualine.nvim' },
+  {
+    src = gh 'rachartier/tiny-cmdline.nvim',
+    config = function()
+      vim.o.cmdheight = 0
+      local tiny_cmdline = require 'tiny-cmdline'
+      tiny_cmdline.setup {
+        on_reposition = tiny_cmdline.adapters.blink,
+      }
+    end,
+  },
 }
 
 local miniclue = require 'mini.clue'
@@ -57,37 +64,6 @@ require('snacks').setup {
         dashboard_startup_section,
       },
     },
-  },
-}
-
-require('noice').setup {
-  cmdline = {
-    enabled = true,
-    view = 'cmdline_popup',
-  },
-  messages = {
-    enabled = true,
-    view = 'mini',
-    view_error = 'popup',
-    view_warn = 'mini',
-    view_history = 'split',
-    view_search = 'virtualtext',
-  },
-  notify = {
-    enabled = true,
-    view = 'mini',
-  },
-  lsp = {
-    override = {
-      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-      ['vim.lsp.util.stylize_markdown'] = true,
-    },
-  },
-  presets = {
-    bottom_search = false,
-    command_palette = true,
-    long_message_to_split = true,
-    lsp_doc_border = true,
   },
 }
 
@@ -158,47 +134,3 @@ require('mini.tabline').setup {
   show_icons = true,
   tabpage_section = 'right',
 }
-
-map('n', '<leader>n', function()
-  require('noice').cmd 'history'
-end, { desc = 'Notification History' })
-
-map('n', '<leader>un', function()
-  require('noice').cmd 'dismiss'
-end, { desc = 'Dismiss Notifications' })
-
-map('n', '<leader>snl', function()
-  require('noice').cmd 'last'
-end, { desc = 'Noice Last Message' })
-
-map('n', '<leader>snh', function()
-  require('noice').cmd 'history'
-end, { desc = 'Noice History' })
-
-map('n', '<leader>sna', function()
-  require('noice').cmd 'all'
-end, { desc = 'Noice All' })
-
-map('n', '<leader>snd', function()
-  require('noice').cmd 'dismiss'
-end, { desc = 'Dismiss All' })
-
-map('n', '<leader>snt', function()
-  require('noice').cmd 'pick'
-end, { desc = 'Noice Picker' })
-
-map('c', '<S-Enter>', function()
-  require('noice').redirect(vim.fn.getcmdline())
-end, { desc = 'Redirect Cmdline' })
-
-map({ 'i', 'n', 's' }, '<C-f>', function()
-  if not require('noice.lsp').scroll(4) then
-    return '<C-f>'
-  end
-end, { silent = true, expr = true, desc = 'Scroll Forward' })
-
-map({ 'i', 'n', 's' }, '<C-b>', function()
-  if not require('noice.lsp').scroll(-4) then
-    return '<C-b>'
-  end
-end, { silent = true, expr = true, desc = 'Scroll Backward' })

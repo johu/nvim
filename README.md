@@ -43,7 +43,7 @@ lua/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
-    ui.lua           # Built-in history and command-line helpers
+    ui.lua           # Enables Neovim's builtin ui2 features
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
@@ -132,9 +132,6 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>j`          | Jump with `mini.jump2d` (n/x/o)    |
 | `<leader>Y`          | Yank to system clipboard           |
 | `[u` / `]u`          | Older/newer undo state             |
-| `<leader>uh`         | Undo history                       |
-| `<leader>um`         | Message history                    |
-| `<leader>uc`         | Command-line window                |
 | `<leader>ut`         | Open undo tree                     |
 
 #### Navigation
@@ -184,11 +181,6 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `]w` / `[w`   | Next/prev warning       |
 | `<leader>sd`  | Diagnostics (document)  |
 | `<leader>sD`  | Diagnostics (workspace) |
-| `<leader>snl` | Last UI message         |
-| `<leader>snh` | UI message history      |
-| `<leader>sna` | All UI messages         |
-| `<leader>snd` | Dismiss UI messages     |
-| `<leader>snt` | Pick UI message         |
 | `<leader>/`   | Grep (alt)              |
 | `<leader>:`   | Command history         |
 | `<leader>fk`  | Keymaps                 |
@@ -234,11 +226,9 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<ESC>`      | Clear search highlight |
 | `<leader>cx` | Source current file    |
 | `<leader>cp` | Markdown preview       |
-| `<leader>n`  | Notification history   |
 | `<leader>pc` | Cleanup plugins        |
 | `<leader>pu` | Update plugins         |
 | `<leader>qq` | Quit all               |
-| `<leader>un` | Dismiss notifications  |
 
 ### Diagnostics
 
@@ -258,8 +248,10 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
   marks, and built-in motions
 - **lualine.nvim** restores the richer branch/diff/diagnostics/LSP statusline
 - **mini.tabline** adds icon-aware buffer tabs across top
-- **noice.nvim** restores a floating command-line UI, notification history, and
-  richer message views
+- Built-in `ui2` provides the compact command-line and message UI
+- `q:` opens command-line history, `:messages`/`g<` open message history, and
+  `:undolist` shows undo history
+- **tiny-cmdline.nvim** keeps the command line usable with `cmdheight=0`
 
 ### Sessions
 

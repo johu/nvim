@@ -38,7 +38,7 @@ opt.showmode = false -- mode handled by status line
 opt.pumheight = 10
 opt.pumblend = 10
 opt.winblend = 0
-opt.completeopt = 'menu,menuone,noselect'
+opt.completeopt = 'menu,menuone,noselect,popup'
 opt.conceallevel = 2
 opt.confirm = true
 opt.concealcursor = ''
@@ -117,7 +117,7 @@ opt.maxmempattern = 20000
 opt.timeoutlen = 300
 
 -- rounded borders in floating windows
--- vim.o.winborder = 'rounded'
+vim.o.winborder = 'rounded'
 
 -- spell checking
 opt.spelllang = { 'en_us' }
