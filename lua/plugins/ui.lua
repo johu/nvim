@@ -1,9 +1,8 @@
 local gh = require('vim-pack').gh
 
--- Dashboard, richer statusline, and a slimmer cmdline are worth the extra dependencies.
+-- Dashboard and a slimmer cmdline are worth the extra dependencies.
 vim.pack.add {
   { src = gh 'folke/snacks.nvim' },
-  { src = gh 'nvim-lualine/lualine.nvim' },
   {
     src = gh 'rachartier/tiny-cmdline.nvim',
     config = function()
@@ -113,22 +112,6 @@ package.preload['nvim-web-devicons'] = function()
   require('mini.icons').mock_nvim_web_devicons()
   return package.loaded['nvim-web-devicons']
 end
-
-require('lualine').setup {
-  options = {
-    theme = 'auto',
-    globalstatus = vim.o.laststatus == 3,
-    disabled_filetypes = { statusline = { 'snacks_dashboard' } },
-  },
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
-    lualine_x = { 'lsp_status', 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
-  },
-}
 
 require('mini.tabline').setup {
   show_icons = true,

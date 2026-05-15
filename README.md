@@ -43,7 +43,7 @@ lua/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
-    ui.lua           # Enables Neovim's builtin ui2 features
+    ui.lua           # Builtin ui2 features and native statusline
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
@@ -57,7 +57,7 @@ lua/
     markdown.lua     # Markdown rendering and browser preview
     navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
-    ui.lua           # mini.clue, statusline, and tabline
+    ui.lua           # snacks dashboard, mini.clue, and tabline
     util.lua         # session workflow helpers
 nvim-pack-lock.json  # Plugin lock file (commit required)
 ```
@@ -243,10 +243,12 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### UI
 
-- **snacks.nvim** restores a startup dashboard when Neovim opens without files
+- **snacks.nvim** shows a startup dashboard when Neovim opens without files
 - **mini.clue** shows grouped key hints for leader keys, windows, registers,
   marks, and built-in motions
-- **lualine.nvim** restores the richer branch/diff/diagnostics/LSP statusline
+- TokyoNight-themed native statusline shows colored mode/git/LSP capsules,
+  icons, diff/diagnostic counts, filename, encoding, file format, filetype,
+  progress, and cursor location
 - **mini.tabline** adds icon-aware buffer tabs across top
 - Built-in `ui2` provides the compact command-line and message UI
 - `q:` opens command-line history, `:messages`/`g<` open message history, and
@@ -255,8 +257,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### Sessions
 
-- **mini.sessions** replaces persistence.nvim for save, restore, and session
-  selection flows
+- **mini.sessions** handles save, restore, and session selection flows
 - Sessions autowrite by default, and `<leader>qd` detaches current session
   before write
 
@@ -300,7 +301,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 ### Syntax and Completion
 
 - **Tree-sitter** for syntax-aware parsing
-- **nvim-treesitter-textobjects** restores textobjects and parameter swapping
+- **nvim-treesitter-textobjects** provides textobjects and parameter swapping
 - Tree-sitter incremental selection uses `<Enter>` to expand and `<BS>` to
   shrink
 - **nvim-ts-autotag** for paired tag editing in markup/component files
@@ -310,9 +311,9 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 - Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls`,
   and `marksman`
-- `gr*` mappings restore fzf-backed references, definitions, implementations,
-  type definitions, rename, and code actions on attach
-- LSP document highlights and inlay hint toggling are restored
+- `gr*` mappings use fzf-backed references, definitions, implementations, type
+  definitions, rename, and code actions on attach
+- LSP document highlights and inlay hint toggling are enabled
 
 ## Formatting
 
