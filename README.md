@@ -82,10 +82,12 @@ nvim-pack-lock.json  # Plugin lock file (commit required)
 - Mouse support enabled
 - System clipboard integration (except in SSH sessions)
 - Compact built-in command-line UI with message history
+- Cursorline shown only in the active window
 
 ### Editing
 
 - Native keymaps auto-close pairs while typing
+- New lines do not continue comment leaders automatically
 - **mini.surround** adds, changes, and deletes surroundings
 - **mini.jump2d** provides single-character jump labels on `<leader>j` in
   normal, visual, and operator-pending modes

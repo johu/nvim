@@ -182,6 +182,30 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
+-- no auto continue comments on new line
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'no-auto-comment',
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
+  end,
+})
+
+-- show cursorline in active window
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
+  group = vim.api.nvim_create_augroup('cursorline', { clear = true }),
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
+
+-- hide cursorline in inactive window
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+  group = augroup 'cursorline',
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})
+
 -- set filetype for .env and .env.* files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = augroup 'env-filetype',
