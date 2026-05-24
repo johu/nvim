@@ -20,6 +20,8 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovimâ
 
 - Every dependency must have a clear, justified purpose.
 - Prefer small in-repo Lua implementations over plugins when feasible.
+- Prefer replacing tiny utility dependencies with focused local code when the
+  required surface area is small.
 - Avoid feature creep.
 
 ### Explicitness

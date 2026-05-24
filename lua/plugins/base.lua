@@ -1,7 +1,6 @@
 local gh = require('vim-pack').gh
 
 vim.pack.add {
-  { src = gh 'nvim-lua/plenary.nvim' },
   { src = gh 'nvim-mini/mini.nvim', version = 'main' },
 }
 

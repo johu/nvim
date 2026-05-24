@@ -48,7 +48,7 @@ lua/
     autocmds.lua     # Auto commands
   plugins/
     init.lua         # Loads plugin modules
-    base.lua         # Base utilities (plenary, mini.nvim)
+    base.lua         # Shared foundations (mini.nvim)
     colorscheme.lua  # TokyoNight color scheme (moon accent)
     completion.lua   # blink.cmp and snippet support
     editor.lua       # mini.nvim editing helpers
@@ -290,7 +290,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### Navigation
 
-- **Harpoon 2** for fast file jumping with Alt+hjkl shortcuts
+- **Harpoon 2** for fast file jumping with Alt+hjkl shortcuts, using a small
+  in-repo compatibility layer instead of `plenary.nvim`
 - **Oil.nvim** for file explorer with `-` keymap
 - **fzf-lua** for fuzzy find across files, buffers, git, diagnostics, and more
 

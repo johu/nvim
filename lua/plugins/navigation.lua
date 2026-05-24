@@ -1,11 +1,82 @@
 local gh = require('vim-pack').gh
 local map = vim.keymap.set
+local uv = vim.uv
+
+local function register_harpoon_plenary_compat()
+  -- Harpoon 2 still uses a tiny plenary surface for persistence and debug
+  -- reloads. Reimplement just what it needs so this config can drop plenary.
+  package.preload['plenary.path'] = function()
+    local Path = {}
+    Path.__index = Path
+
+    function Path:new(path)
+      return setmetatable({ filename = vim.fs.normalize(path) }, self)
+    end
+
+    function Path:exists()
+      return uv.fs_stat(self.filename) ~= nil
+    end
+
+    function Path:mkdir()
+      vim.fn.mkdir(self.filename, 'p')
+    end
+
+    function Path:make_relative(root)
+      if root == nil or root == '' then
+        return self.filename
+      end
+
+      return vim.fs.relpath(root, self.filename) or self.filename
+    end
+
+    function Path:read()
+      local fd = assert(uv.fs_open(self.filename, 'r', 438))
+      local stat = assert(uv.fs_fstat(fd))
+      local data = stat.size > 0 and assert(uv.fs_read(fd, stat.size, 0)) or ''
+      assert(uv.fs_close(fd))
+      return data
+    end
+
+    function Path:write(data, flag)
+      if flag ~= 'w' then
+        error('plenary.path compatibility only supports write mode')
+      end
+
+      local parent = vim.fs.dirname(self.filename)
+      if parent then
+        vim.fn.mkdir(parent, 'p')
+      end
+
+      local fd = assert(uv.fs_open(self.filename, 'w', 420))
+      assert(uv.fs_write(fd, data, 0))
+      assert(uv.fs_close(fd))
+    end
+
+    return Path
+  end
+
+  package.preload['plenary.reload'] = function()
+    local M = {}
+
+    function M.reload_module(prefix)
+      for name in pairs(package.loaded) do
+        if name == prefix or vim.startswith(name, prefix .. '.') then
+          package.loaded[name] = nil
+        end
+      end
+    end
+
+    return M
+  end
+end
 
 vim.pack.add {
   { src = gh 'ThePrimeagen/harpoon', version = 'harpoon2' },
   { src = gh 'stevearc/oil.nvim' },
   { src = gh 'ibhagwan/fzf-lua' },
 }
+
+register_harpoon_plenary_compat()
 
 local harpoon = require 'harpoon'
 harpoon:setup {
