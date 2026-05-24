@@ -50,7 +50,7 @@ lua/
     init.lua         # Loads plugin modules
     base.lua         # Shared foundations (mini.nvim)
     colorscheme.lua  # TokyoNight color scheme (moon accent)
-    completion.lua   # blink.cmp and snippet support
+    completion.lua   # blink.cmp and mini.snippets support
     editor.lua       # mini.nvim editing helpers
     formatting.lua   # conform.nvim formatter integration
     lsp.lua          # Mason and LSP tool installation
@@ -312,7 +312,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Tree-sitter incremental selection uses `<Enter>` to expand and `<BS>` to
   shrink
 - **nvim-ts-autotag** for paired tag editing in markup/component files
-- **blink.cmp** with LuaSnip and friendly-snippets
+- **blink.cmp** with **mini.snippets** and friendly-snippets
 
 ### LSP
 

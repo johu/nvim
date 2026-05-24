@@ -1,11 +1,44 @@
 local gh = require('vim-pack').gh
 
 vim.pack.add {
-  { src = gh 'L3MON4D3/LuaSnip' },
   { src = gh 'rafamadriz/friendly-snippets' },
   { src = gh 'saghen/blink.lib' },
   { src = gh 'saghen/blink.cmp' },
 }
+
+local gen_loader = require('mini.snippets').gen_loader
+
+local function by_lang()
+  local loaders = {}
+
+  return function(context)
+    local lang = (context or {}).lang
+    if type(lang) ~= 'string' or lang == '' then
+      return {}
+    end
+
+    local patterns = {
+      lang .. '/**/*.json',
+      lang .. '/**/*.lua',
+      lang .. '/**/*.code-snippets',
+      '**/' .. lang .. '.json',
+      '**/' .. lang .. '.lua',
+      '**/' .. lang .. '.code-snippets',
+    }
+
+    local snippets = {}
+    for _, pattern in ipairs(patterns) do
+      local loader = loaders[pattern]
+      if loader == nil then
+        loader = gen_loader.from_runtime(pattern)
+        loaders[pattern] = loader
+      end
+      table.insert(snippets, loader(context))
+    end
+
+    return snippets
+  end
+end
 
 vim.api.nvim_create_autocmd('PackChanged', {
   desc = 'Build blink.cmp after install/update',
@@ -24,7 +57,22 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
-require('luasnip.loaders.from_vscode').lazy_load()
+require('mini.snippets').setup {
+  snippets = {
+    gen_loader.from_runtime 'all.json',
+    gen_loader.from_runtime 'all.lua',
+    gen_loader.from_runtime 'all.code-snippets',
+    gen_loader.from_runtime 'global.json',
+    gen_loader.from_runtime 'global.lua',
+    gen_loader.from_runtime 'global.code-snippets',
+    by_lang(),
+  },
+  mappings = {
+    expand = '',
+    jump_next = '',
+    jump_prev = '',
+  },
+}
 
 local cmp = require 'blink.cmp'
 cmp.build():wait(60000)
@@ -55,6 +103,9 @@ cmp.setup {
     completion = {
       ghost_text = { enabled = true },
     },
+  },
+  snippets = {
+    preset = 'mini_snippets',
   },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },

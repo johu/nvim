@@ -172,6 +172,7 @@ Use direct vim.keymap.set calls for clarity and consistency.
 
 - Subject line ≤ 50 characters
 - Body lines wrapped at 72 characters
+- Use actual line breaks in commit bodies, never literal `\n`
 - Use imperative mood
 
 ### Docs Sync
