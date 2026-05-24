@@ -43,7 +43,7 @@ lua/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
-    ui.lua           # Builtin ui2 features and native statusline
+    ui.lua           # Builtin ui2, native dashboard, and statusline
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
@@ -57,7 +57,7 @@ lua/
     markdown.lua     # Markdown rendering and browser preview
     navigation.lua   # Harpoon, Oil, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
-    ui.lua           # snacks dashboard, mini.clue, and tabline
+    ui.lua           # mini.clue, tabline, notifications, and cmdline
     util.lua         # session workflow helpers
 nvim-pack-lock.json  # Plugin lock file (commit required)
 ```
@@ -245,7 +245,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### UI
 
-- **snacks.nvim** shows a startup dashboard when Neovim opens without files
+- A native startup dashboard shows selected shortcuts and startup stats when
+  Neovim opens without files
 - **mini.clue** shows grouped key hints for leader keys, windows, registers,
   marks, and built-in motions
 - TokyoNight-themed native statusline shows colored mode/git/LSP capsules,

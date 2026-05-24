@@ -1,8 +1,7 @@
 local gh = require('vim-pack').gh
 
--- Dashboard and a slimmer cmdline are worth the extra dependencies.
+-- tiny-cmdline keeps the command line usable with cmdheight=0.
 vim.pack.add {
-  { src = gh 'folke/snacks.nvim' },
   {
     src = gh 'rachartier/tiny-cmdline.nvim',
     config = function()
@@ -16,55 +15,6 @@ vim.pack.add {
 }
 
 require('mini.notify').setup {}
-
-local function dashboard_startup_section()
-  local started = vim.g.config_start_time or vim.uv.hrtime()
-  local elapsed_ms = (vim.uv.hrtime() - started) / 1e6
-  local stats = { loaded = 0, count = 0 }
-
-  local ok, plugins = pcall(vim.pack.get, nil, { info = false })
-  if ok then
-    stats.loaded = #plugins
-    stats.count = #plugins
-  end
-
-  return {
-    align = 'center',
-    text = {
-      { '⚡ Neovim loaded ', hl = 'footer' },
-      { ('%d/%d'):format(stats.loaded, stats.count), hl = 'special' },
-      { ' plugins in ', hl = 'footer' },
-      { ('%.2fms'):format(elapsed_ms), hl = 'special' },
-    },
-  }
-end
-
-require('snacks').setup {
-  dashboard = {
-    enabled = true,
-    preset = {
-      keys = {
-        { icon = ' ', key = 'f', desc = 'Find File', action = "<cmd>lua require('fzf-lua').files()<cr>" },
-        { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
-        { icon = ' ', key = 'g', desc = 'Find Text', action = "<cmd>lua require('fzf-lua').live_grep()<cr>" },
-        { icon = ' ', key = 'r', desc = 'Recent Files', action = "<cmd>lua require('fzf-lua').oldfiles()<cr>" },
-        { icon = ' ', key = 'c', desc = 'Config', action = "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.stdpath('config') })<cr>" },
-        { icon = ' ', key = 's', desc = 'Restore Session', action = '<cmd>lua MiniSessions.read()<cr>' },
-        { icon = '󰏔 ', key = 'p', desc = 'Plugins', action = ':PackUpdate' },
-        { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
-      },
-    },
-    sections = {
-      {
-        pane = 1,
-        { section = 'header' },
-        { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
-        { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
-        dashboard_startup_section,
-      },
-    },
-  },
-}
 
 local miniclue = require 'mini.clue'
 

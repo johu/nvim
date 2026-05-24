@@ -104,7 +104,13 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup 'help-vertical-split',
   pattern = 'help',
-  command = 'wincmd L',
+  callback = function()
+    if vim.api.nvim_win_get_config(0).relative ~= '' then
+      return
+    end
+
+    vim.cmd 'wincmd L'
+  end,
 })
 
 -- make it easier to close man-files when opened inline
