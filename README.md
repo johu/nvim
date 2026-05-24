@@ -169,41 +169,41 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 #### Search and Diagnostics
 
-| Mapping       | Description             |
-| ------------- | ----------------------- |
-| `<leader>sg`  | Grep (live)             |
-| `<leader>sw`  | Grep current word       |
-| `<leader>sW`  | Grep current WORD       |
-| `<leader>sR`  | Resume last picker      |
-| `<leader>st`  | Search todos/fixes      |
-| `<leader>sb`  | Search buffer           |
-| `<leader>cd`  | Diagnostic float        |
-| `]d` / `[d`   | Next/prev diagnostic    |
-| `]e` / `[e`   | Next/prev error         |
-| `]w` / `[w`   | Next/prev warning       |
-| `<leader>sd`  | Diagnostics (document)  |
-| `<leader>sD`  | Diagnostics (workspace) |
-| `<leader>/`   | Grep (alt)              |
-| `<leader>:`   | Command history         |
-| `<leader>fk`  | Keymaps                 |
-| `<leader>fh`  | Help tags               |
-| `<leader>fr`  | Recent files            |
-| `<leader>ec`  | Neovim config files     |
-| `<leader>ep`  | Plugin packages         |
+| Mapping      | Description             |
+| ------------ | ----------------------- |
+| `<leader>sg` | Grep (live)             |
+| `<leader>sw` | Grep current word       |
+| `<leader>sW` | Grep current WORD       |
+| `<leader>sR` | Resume last picker      |
+| `<leader>st` | Search todos/fixes      |
+| `<leader>sb` | Search buffer           |
+| `<leader>cd` | Diagnostic float        |
+| `]d` / `[d`  | Next/prev diagnostic    |
+| `]e` / `[e`  | Next/prev error         |
+| `]w` / `[w`  | Next/prev warning       |
+| `<leader>sd` | Diagnostics (document)  |
+| `<leader>sD` | Diagnostics (workspace) |
+| `<leader>/`  | Grep (alt)              |
+| `<leader>:`  | Command history         |
+| `<leader>fk` | Keymaps                 |
+| `<leader>fh` | Help tags               |
+| `<leader>fr` | Recent files            |
+| `<leader>ec` | Neovim config files     |
+| `<leader>ep` | Plugin packages         |
 
 #### LSP
 
-| Mapping       | Description                  |
-| ------------- | ---------------------------- |
-| `grn`         | Rename symbol                |
-| `gra`         | Code actions                 |
-| `grr`         | References (fzf)             |
-| `gri`         | Implementation (fzf)         |
-| `grd`         | Definition (fzf)             |
-| `grD`         | Declaration                  |
-| `grt`         | Type definition (fzf)        |
-| `gO`          | Document symbols (fzf)       |
-| `gW`          | Workspace symbols (fzf)      |
+| Mapping | Description             |
+| ------- | ----------------------- |
+| `grn`   | Rename symbol           |
+| `gra`   | Code actions            |
+| `grr`   | References (fzf)        |
+| `gri`   | Implementation (fzf)    |
+| `grd`   | Definition (fzf)        |
+| `grD`   | Declaration             |
+| `grt`   | Type definition (fzf)   |
+| `gO`    | Document symbols (fzf)  |
+| `gW`    | Workspace symbols (fzf) |
 
 #### Git
 
@@ -252,6 +252,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
   icons, diff/diagnostic counts, filename, encoding, file format, filetype,
   progress, and cursor location
 - **mini.tabline** adds icon-aware buffer tabs across top
+- **mini.notify** handles notifications
 - Built-in `ui2` provides the compact command-line and message UI
 - `q:` opens command-line history, `:messages`/`g<` open message history, and
   `:undolist` shows undo history
@@ -266,6 +267,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 ### Auto Commands & User Commands
 
 **Auto Commands:**
+
 - **Highlight on yank** — visual feedback when copying
 - **Checktime** — reload file if changed externally (FocusGained, TermClose, TermLeave)
 - **Restore cursor position** — resume at last edit location on BufReadPost
@@ -276,11 +278,12 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **Wrap and spell** — enabled for text/markdown/plaintex/typst/gitcommit
 - **JSON conceal** — conceallevel=0 to prevent quote hiding
 - **Auto-create dirs** — mkdir -p parent on buffer write
-- **Filetype detection** — .env/.env.* (sh), .toml (toml), .ejs/.ejs.t (embedded_template), .code-snippets (json)
+- **Filetype detection** — .env/.env.\* (sh), .toml (toml), .ejs/.ejs.t (embedded_template), .code-snippets (json)
 - **Markdown** — textwidth=80, formatoptions for prose
 - **PackChanged hooks** — auto-run TSUpdate on treesitter install/update, build markdown-preview.nvim
 
 **User Commands:**
+
 - **PackUpdate** — `PackUpdate` or `PackUpdate! pkg1 pkg2` for update with force
 - **PackClean** — remove inactive plugins from disk
 

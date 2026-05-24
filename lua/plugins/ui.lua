@@ -15,7 +15,7 @@ vim.pack.add {
   },
 }
 
-local miniclue = require 'mini.clue'
+require('mini.notify').setup {}
 
 local function dashboard_startup_section()
   local started = vim.g.config_start_time or vim.uv.hrtime()
@@ -65,6 +65,8 @@ require('snacks').setup {
     },
   },
 }
+
+local miniclue = require 'mini.clue'
 
 miniclue.setup {
   triggers = {
