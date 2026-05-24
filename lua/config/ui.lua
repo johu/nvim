@@ -220,20 +220,60 @@ local function is_startup_buffer(bufnr)
 end
 
 local function set_dashboard_window_options(winid)
-  local win = vim.wo[winid]
-  win.colorcolumn = ''
-  win.cursorcolumn = false
-  win.cursorline = false
-  win.foldcolumn = '0'
-  win.foldmethod = 'manual'
-  win.list = false
-  win.number = false
-  win.relativenumber = false
-  win.signcolumn = 'no'
-  win.sidescrolloff = 0
-  win.spell = false
-  win.statuscolumn = ''
-  win.wrap = false
+  if vim.w[winid].dashboard_saved_window_options == nil then
+    vim.w[winid].dashboard_saved_window_options = {
+      colorcolumn = vim.api.nvim_get_option_value('colorcolumn', { win = winid }),
+      cursorcolumn = vim.api.nvim_get_option_value('cursorcolumn', { win = winid }),
+      cursorline = vim.api.nvim_get_option_value('cursorline', { win = winid }),
+      foldcolumn = vim.api.nvim_get_option_value('foldcolumn', { win = winid }),
+      foldmethod = vim.api.nvim_get_option_value('foldmethod', { win = winid }),
+      list = vim.api.nvim_get_option_value('list', { win = winid }),
+      number = vim.api.nvim_get_option_value('number', { win = winid }),
+      relativenumber = vim.api.nvim_get_option_value('relativenumber', { win = winid }),
+      signcolumn = vim.api.nvim_get_option_value('signcolumn', { win = winid }),
+      sidescrolloff = vim.api.nvim_get_option_value('sidescrolloff', { win = winid }),
+      spell = vim.api.nvim_get_option_value('spell', { win = winid }),
+      statuscolumn = vim.api.nvim_get_option_value('statuscolumn', { win = winid }),
+      wrap = vim.api.nvim_get_option_value('wrap', { win = winid }),
+    }
+  end
+
+  local dashboard_window_options = {
+    colorcolumn = '',
+    cursorcolumn = false,
+    cursorline = false,
+    foldcolumn = '0',
+    foldmethod = 'manual',
+    list = false,
+    number = false,
+    relativenumber = false,
+    signcolumn = 'no',
+    sidescrolloff = 0,
+    spell = false,
+    statuscolumn = '',
+    wrap = false,
+  }
+
+  for option, value in pairs(dashboard_window_options) do
+    vim.api.nvim_set_option_value(option, value, { scope = 'local', win = winid })
+  end
+end
+
+local function reset_dashboard_window_options(winid)
+  if not winid or winid == 0 or not vim.api.nvim_win_is_valid(winid) then
+    return
+  end
+
+  local saved_options = vim.w[winid].dashboard_saved_window_options
+  if type(saved_options) ~= 'table' then
+    return
+  end
+
+  for option, value in pairs(saved_options) do
+    vim.api.nvim_set_option_value(option, value, { scope = 'local', win = winid })
+  end
+
+  vim.w[winid].dashboard_saved_window_options = nil
 end
 
 local function dashboard_menu_entries()
@@ -278,6 +318,8 @@ local function render_dashboard(bufnr)
   local top_padding = math.max(0, math.floor((height - dashboard_content_height()) / 2))
   local lines = {}
   local highlights = {}
+
+  vim.b[bufnr].dashboard_winid = winid
 
   local function add_line(text, line_highlights)
     lines[#lines + 1] = text
@@ -821,6 +863,15 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'VimResized' }, {
     local bufnr = event.buf and event.buf ~= 0 and event.buf or vim.api.nvim_get_current_buf()
     if vim.bo[bufnr].filetype == 'native_dashboard' then
       render_dashboard(bufnr)
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWinLeave', {
+  group = dashboard_group,
+  callback = function(event)
+    if vim.bo[event.buf].filetype == 'native_dashboard' then
+      reset_dashboard_window_options(vim.b[event.buf].dashboard_winid)
     end
   end,
 })
