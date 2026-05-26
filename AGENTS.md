@@ -50,7 +50,9 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   ├── health.lua
 │   │   ├── keymaps.lua
 │   │   ├── options.lua
-│   │   └── ui.lua
+│   │   ├── ui.lua
+│   │   ├── dashboard.lua
+│   │   └── statusline.lua
 │   └── plugins/
 │       ├── init.lua
 │       ├── markdown.lua
@@ -68,6 +70,9 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
   - `autocmds.lua` → `vim.api.nvim_create_autocmd`
   - `diagnostics.lua` → `vim.diagnostic`
   - `health.lua` → custom checks (optional but encouraged)
+  - `ui.lua` → enables builtin UI and loads native UI modules
+  - `dashboard.lua` → native startup dashboard
+  - `statusline.lua` → native statusline and git cache
 
 - `lua/plugins/` contains:
   - `init.lua` → loads plugin modules

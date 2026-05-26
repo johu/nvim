@@ -43,7 +43,9 @@ lua/
     init.lua         # Loads core config modules
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
-    ui.lua           # Builtin ui2, native dashboard, and statusline
+    ui.lua           # Builtin ui2 and native UI loader
+    dashboard.lua    # Native startup dashboard
+    statusline.lua   # Native statusline and git cache
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
