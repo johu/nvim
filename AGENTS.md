@@ -53,6 +53,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   ├── ui.lua
 │   │   ├── dashboard.lua
 │   │   └── statusline.lua
+│   │   └── tabline.lua
 │   └── plugins/
 │       ├── init.lua
 │       ├── markdown.lua
@@ -73,6 +74,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
   - `ui.lua` → enables builtin UI and loads native UI modules
   - `dashboard.lua` → native startup dashboard
   - `statusline.lua` → native statusline and git cache
+  - `tabline.lua` → native buffer tabline with colored icons
 
 - `lua/plugins/` contains:
   - `init.lua` → loads plugin modules

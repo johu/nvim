@@ -64,8 +64,3 @@ package.preload['nvim-web-devicons'] = function()
   require('mini.icons').mock_nvim_web_devicons()
   return package.loaded['nvim-web-devicons']
 end
-
-require('mini.tabline').setup {
-  show_icons = true,
-  tabpage_section = 'right',
-}

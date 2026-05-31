@@ -46,6 +46,7 @@ lua/
     ui.lua           # Builtin ui2 and native UI loader
     dashboard.lua    # Native startup dashboard
     statusline.lua   # Native statusline and git cache
+    tabline.lua      # Native buffer tabline with colored icons
     diagnostics.lua  # Diagnostic display configuration
     autocmds.lua     # Auto commands
   plugins/
@@ -254,7 +255,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - TokyoNight-themed native statusline shows colored mode/git/LSP capsules,
   icons, diff/diagnostic counts, filename, encoding, file format, filetype,
   progress, and cursor location
-- **mini.tabline** adds icon-aware buffer tabs across top
+- Native buffer tabline with colored icons, click-to-switch, and fill
+  background matching the editor background
 - **mini.notify** handles notifications
 - Built-in `ui2` provides the compact command-line and message UI
 - `q:` opens command-line history, `:messages`/`g<` open message history, and
