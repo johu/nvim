@@ -219,10 +219,10 @@ local function dashboard_menu_entries()
   local block_width = 0
 
   for _, shortcut in ipairs(dashboard_shortcuts) do
-    local label = shortcut.icon .. ' ' .. shortcut.desc
+    local label = shortcut.icon .. '  ' .. shortcut.desc
     local label_width = vim.fn.strdisplaywidth(label)
     local key_width = vim.fn.strdisplaywidth(shortcut.key)
-    block_width = math.max(block_width, label_width + 2 + key_width)
+    block_width = math.max(block_width, label_width + 5 + key_width)
     entries[#entries + 1] = {
       label = label,
       label_width = label_width,
