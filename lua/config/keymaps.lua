@@ -32,6 +32,34 @@ map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
 -- tab/shift-tab: like browser tabs, feels natural
 map('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
 map('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
+map('n', '<leader>bb', ':e #<CR>', { desc = 'Switch to recent buffer' })
+map('n', '<leader>bn', ':bnext<CR>', { desc = 'Next buffer' })
+map('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer' })
+map('n', '<leader>bd', ':bd<CR>', { desc = 'Delete buffer' })
+map('n', '<leader>bl', function()
+  local cur = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted and buf < cur then
+      pcall(vim.api.nvim_buf_delete, buf, {})
+    end
+  end
+end, { desc = 'Close all left buffers' })
+map('n', '<leader>br', function()
+  local cur = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted and buf > cur then
+      pcall(vim.api.nvim_buf_delete, buf, {})
+    end
+  end
+end, { desc = 'Close all right buffers' })
+map('n', '<leader>bo', function()
+  local cur = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= cur and vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, {})
+    end
+  end
+end, { desc = 'Close all other buffers' })
 
 map('n', '<leader><tab><tab>', '<cmd>tabnew<CR>', { desc = 'New Tab' })
 map('n', '<leader><tab>d', '<cmd>tabclose<CR>', { desc = 'Close Tab' })

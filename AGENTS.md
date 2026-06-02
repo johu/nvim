@@ -52,7 +52,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   ├── options.lua
 │   │   ├── ui.lua
 │   │   ├── dashboard.lua
-│   │   └── statusline.lua
+│   │   ├── statusline.lua
 │   │   └── tabline.lua
 │   └── plugins/
 │       ├── init.lua

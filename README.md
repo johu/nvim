@@ -112,6 +112,19 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<leader>we` | Make splits equal size    |
 | `<leader>wx` | Close current split       |
 
+#### Buffer Management
+
+| Mapping      | Description             |
+| ------------ | ----------------------- |
+| `<Tab>`      | Next buffer             |
+| `<S-Tab>`    | Previous buffer         |
+| `<leader>bb` | Switch to recent buffer |
+| `<leader>bd` | Delete buffer           |
+| `<leader>bl` | Close buffers to left   |
+| `<leader>bo` | Close all other buffers |
+| `<leader>bp` | Previous buffer         |
+| `<leader>br` | Close buffers to right  |
+
 #### Tab Management
 
 | Mapping              | Description      |
