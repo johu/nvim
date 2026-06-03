@@ -58,7 +58,7 @@ lua/
     formatting.lua   # conform.nvim formatter integration
     lsp.lua          # Mason and LSP tool installation
     markdown.lua     # Markdown rendering and browser preview
-    navigation.lua   # Harpoon, Oil, fzf-lua
+    navigation.lua   # Harpoon, mini.files, fzf-lua
     syntax.lua       # Tree-sitter and autotag support
     ui.lua           # mini.clue, tabline, notifications, and cmdline
     util.lua         # session workflow helpers
@@ -309,7 +309,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 - **Harpoon 2** for fast file jumping with Alt+hjkl shortcuts, using a small
   in-repo compatibility layer instead of `plenary.nvim`
-- **Oil.nvim** for file explorer with `-` keymap
+- **mini.files** for file explorer with `-` keymap
 - **fzf-lua** for fuzzy find across files, buffers, git, diagnostics, and more
 
 ### Search and Replace

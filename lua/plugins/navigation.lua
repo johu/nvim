@@ -39,7 +39,7 @@ local function register_harpoon_plenary_compat()
 
     function Path:write(data, flag)
       if flag ~= 'w' then
-        error('plenary.path compatibility only supports write mode')
+        error 'plenary.path compatibility only supports write mode'
       end
 
       local parent = vim.fs.dirname(self.filename)
@@ -72,9 +72,12 @@ end
 
 vim.pack.add {
   { src = gh 'ThePrimeagen/harpoon', version = 'harpoon2' },
-  { src = gh 'stevearc/oil.nvim' },
   { src = gh 'ibhagwan/fzf-lua' },
 }
+
+require('mini.files').setup {}
+
+map('n', '-', require('mini.files').open, { desc = 'Open file explorer' })
 
 register_harpoon_plenary_compat()
 
@@ -85,12 +88,6 @@ harpoon:setup {
   },
   settings = {
     save_on_toggle = true,
-  },
-}
-
-require('oil').setup {
-  view_options = {
-    show_hidden = true,
   },
 }
 
@@ -109,8 +106,6 @@ for index, shortcut in ipairs { 'h', 'j', 'k', 'l' } do
     harpoon:list():select(index)
   end, { desc = 'Harpoon to File ' .. index })
 end
-
-map('n', '-', require('oil').open, { desc = 'Open file explorer' })
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('config-fzf-terminal-keys', { clear = true }),
