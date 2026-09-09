@@ -8,6 +8,10 @@ vim.pack.add {
       vim.o.cmdheight = 0
       local tiny_cmdline = require 'tiny-cmdline'
       tiny_cmdline.setup {
+        native_types = {},
+        title = {
+          enabled = true,
+        },
         on_reposition = tiny_cmdline.adapters.blink,
       }
     end,
