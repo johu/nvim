@@ -20,6 +20,10 @@
       "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "gentoo-syntax": {
+      "rev": "1b3a81ec62e5c843245dc431be0fe072add7eca8",
+      "src": "https://github.com/gentoo/gentoo-syntax"
+    },
     "grug-far.nvim": {
       "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
       "src": "https://github.com/MagicDuck/grug-far.nvim"

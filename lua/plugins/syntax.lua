@@ -4,6 +4,7 @@ vim.pack.add {
   { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' },
   { src = gh 'nvim-treesitter/nvim-treesitter-textobjects' },
   { src = gh 'windwp/nvim-ts-autotag' },
+  { src = gh 'gentoo/gentoo-syntax' },
 }
 
 require('nvim-treesitter').setup {
@@ -22,8 +23,10 @@ require('nvim-ts-autotag').setup {}
 
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
-    pcall(vim.treesitter.start)
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    local ok = pcall(vim.treesitter.start)
+    if ok then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
   end,
 })
 

@@ -16,6 +16,14 @@ local servers = {
   marksman = {
     mason = 'marksman',
   },
+  termux_language_server = {
+    mason = 'termux-language-server',
+    filetypes = { 'ebuild' },
+    -- generic Bash checks do not understand Gentoo ebuild semantics
+    handlers = {
+      ['textDocument/publishDiagnostics'] = function() end,
+    },
+  },
 }
 
 local function extend_server_config(server_name, server)

@@ -329,12 +329,17 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Tree-sitter incremental selection uses `<Enter>` to expand and `<BS>` to
   shrink
 - **nvim-ts-autotag** for paired tag editing in markup/component files
+- **gentoo-syntax** provides filetypes, syntax, and indentation for ebuilds,
+  eclasses, and Portage files
 - **blink.cmp** with **mini.snippets** and friendly-snippets
 
 ### LSP
 
-- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls`,
-  and `marksman`
+- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`,
+  `marksman`, and `termux_language_server`
+- `termux_language_server` supports ebuilds and eclasses, with Portage-backed
+  package completion in ebuild dependency variables; `pkgcheck` publishes QA
+  diagnostics when an ebuild is saved
 - `gr*` mappings use fzf-backed references, definitions, implementations, type
   definitions, rename, and code actions on attach
 - LSP document highlights and inlay hint toggling are enabled
