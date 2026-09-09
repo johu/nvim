@@ -181,6 +181,9 @@ Use direct vim.keymap.set calls for clarity and consistency.
 - Body lines wrapped at 72 characters
 - Use actual line breaks in commit bodies, never literal `\n`
 - Use imperative mood
+- When using Pi's `commit_changes`, pass the exact commit text through
+  `verbatim` and inspect `git log -1` afterward. Do not rely on its generated
+  summary for commits that must match an established repository style.
 
 ### Docs Sync
 
