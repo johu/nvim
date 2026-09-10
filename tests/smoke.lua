@@ -8,6 +8,13 @@ vim.cmd 'filetype on'
 require 'config.options'
 require 'config.autocmds'
 
+assert(vim.wo.foldmethod == 'expr', 'expected expression-based folds')
+assert(vim.wo.foldexpr == 'v:lua.vim.treesitter.foldexpr()', 'expected Tree-sitter fold expression')
+vim.cmd.vnew()
+assert(vim.wo.foldmethod == 'expr', 'expected expression-based folds in new windows')
+assert(vim.wo.foldexpr == 'v:lua.vim.treesitter.foldexpr()', 'expected Tree-sitter fold expression in new windows')
+vim.cmd.close()
+
 local tmpdir = vim.fn.tempname()
 vim.fn.mkdir(tmpdir, 'p')
 

@@ -75,7 +75,8 @@ opt.clipboard = vim.env.SSH_TTY and '' or 'unnamedplus'
 
 -- folding
 opt.smoothscroll = true
-vim.wo.foldmethod = 'expr'
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 opt.foldlevel = 99 -- start with all folds open
 opt.formatoptions = 'jcroqlnt'
 opt.grepformat = '%f:%l:%c:%m'

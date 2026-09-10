@@ -92,6 +92,7 @@ nvim-pack-lock.json  # Plugin lock file (commit required)
 - Search settings (ignorecase, smartcase, live substitute preview)
 - Terminal true colors with dark background
 - Undo files enabled
+- Tree-sitter expression folding, open by default
 - Mouse support enabled
 - System clipboard integration (except in SSH sessions)
 - Compact built-in command-line UI with message history
