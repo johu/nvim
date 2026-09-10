@@ -8,7 +8,7 @@ Neovim features over plugins.
 - Neovim 0.12+ (uses `vim.pack` for plugin management)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
-- `curl` required for the first `markdown-preview.nvim` launch
+- `curl` required when `markdown-preview.nvim` is installed or updated
 - Rust toolchain (`cargo`) to build `blink.cmp`
 
 ## Installation

@@ -9,7 +9,6 @@ require('render-markdown').setup {}
 vim.cmd [[do FileType]]
 
 local function toggle_markdown_preview()
-  vim.fn['mkdp#util#install_sync'](1)
   vim.fn['mkdp#util#toggle_preview']()
 end
 
