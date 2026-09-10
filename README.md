@@ -296,7 +296,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **Wrap and spell** — enabled for text/markdown/plaintex/typst/gitcommit
 - **JSON conceal** — conceallevel=0 to prevent quote hiding
 - **Auto-create dirs** — mkdir -p parent on buffer write
-- **Filetype detection** — .env/.env.\* (sh), .toml (toml), .ejs/.ejs.t (embedded_template), .code-snippets (json)
+- **Filetype detection** — .env/.env.\* (dotenv), .ejs/.ejs.t
+  (embedded_template), and .code-snippets (json); Neovim handles TOML
 - **Markdown** — textwidth=80, formatoptions for prose
 - **PackChanged hooks** — auto-run TSUpdate on treesitter install/update, build markdown-preview.nvim
 
@@ -335,11 +336,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### LSP
 
-- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`,
-  `marksman`, and `termux_language_server`
-- `termux_language_server` supports ebuilds and eclasses, with Portage-backed
-  package completion in ebuild dependency variables; `pkgcheck` publishes QA
-  diagnostics when an ebuild is saved
+- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls` and
+  `marksman`
 - `gr*` mappings use fzf-backed references, definitions, implementations, type
   definitions, rename, and code actions on attach
 - LSP document highlights and inlay hint toggling are enabled
