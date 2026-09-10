@@ -100,7 +100,7 @@ nvim-pack-lock.json  # Plugin lock file (commit required)
 
 ### Editing
 
-- Native keymaps auto-close pairs while typing
+- **mini.pairs** auto-closes pairs and skips existing closers while typing
 - New lines do not continue comment leaders automatically
 - **mini.surround** adds, changes, and deletes surroundings
 - **mini.jump2d** provides single-character jump labels on `<leader>j` in

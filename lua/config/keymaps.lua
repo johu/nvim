@@ -121,15 +121,6 @@ map('n', '<leader>Y', [["+Y]], opts)
 -- leader d delete wont remember as yanked/clipboard when delete pasting
 map({ 'n', 'v' }, '<leader>d', [["_d]])
 
--- auto close pairs
--- map("i", "'", "''<left>") -- commented out - smart!
-map('i', '`', '``<left>')
-map('i', '"', '""<left>')
-map('i', '(', '()<left>')
-map('i', '[', '[]<left>')
-map('i', '{', '{}<left>')
-map('i', '<', '<><left>')
-
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 

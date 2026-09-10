@@ -8,6 +8,8 @@ vim.pack.add {
 
 require('mini.surround').setup()
 
+require('mini.pairs').setup()
+
 require('mini.jump2d').setup {
   mappings = {
     start_jumping = '',
