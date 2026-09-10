@@ -134,6 +134,8 @@ vim.pack.add({
 - Run `nvim --clean --headless -l tests/smoke.lua` after changes to core
   configuration, filetype detection, or autocmd behavior.
 - Keep smoke tests independent of user-installed plugins.
+- Run `nvim --headless -u init.lua -l tests/plugins.lua` after changes to
+  plugin setup, package declarations, or LSP configuration.
 
 ---
 
