@@ -129,6 +129,12 @@ vim.pack.add({
 - Avoid deep nesting
 - Group related logic, but don’t overload single files
 
+### Testing
+
+- Run `nvim --clean --headless -l tests/smoke.lua` after changes to core
+  configuration, filetype detection, or autocmd behavior.
+- Keep smoke tests independent of user-installed plugins.
+
 ---
 
 ## Commit Guidelines

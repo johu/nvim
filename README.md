@@ -33,6 +33,14 @@ rm -rf ~/.local/share/nvim \
 git clone https://github.com/johu/nvim.git ~/.config/nvim
 ```
 
+## Validation
+
+Run the headless smoke test for core filetype and autocmd behavior:
+
+```bash
+nvim --clean --headless -l tests/smoke.lua
+```
+
 ## Structure
 
 ```
@@ -62,6 +70,8 @@ lua/
     syntax.lua       # Tree-sitter and autotag support
     ui.lua           # mini.clue, tabline, notifications, and cmdline
     util.lua         # session workflow helpers
+tests/
+  smoke.lua          # headless core configuration smoke test
 nvim-pack-lock.json  # Plugin lock file (commit required)
 ```
 
