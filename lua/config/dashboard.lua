@@ -90,15 +90,16 @@ end
 local function startup_stats_line()
   local started = vim.g.config_start_time or vim.uv.hrtime()
   local elapsed_ms = (vim.uv.hrtime() - started) / 1e6
-  local stats = { loaded = 0, count = 0 }
+  local packages = vim.pack.get(nil, { info = false })
+  local active = 0
 
-  local ok, plugins = pcall(vim.pack.get, nil, { info = false })
-  if ok then
-    stats.loaded = #plugins
-    stats.count = #plugins
+  for _, package in ipairs(packages) do
+    if package.active then
+      active = active + 1
+    end
   end
 
-  return ('⚡ Neovim loaded %d/%d plugins in %.2fms'):format(stats.loaded, stats.count, elapsed_ms)
+  return ('⚡ Startup: %.2fms · Packages: %d/%d active'):format(elapsed_ms, active, #packages)
 end
 
 local function center_text(text, width)

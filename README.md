@@ -272,8 +272,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### UI
 
-- A native startup dashboard shows selected shortcuts and startup stats when
-  Neovim opens without files
+- A native startup dashboard shows selected shortcuts, startup time, and active
+  package count when Neovim opens without files
 - **mini.clue** shows grouped key hints for leader keys, windows, registers,
   marks, and built-in motions
 - TokyoNight-themed native statusline shows colored mode/git/LSP capsules,
