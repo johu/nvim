@@ -209,24 +209,6 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
   end,
 })
 
--- set filetype for .env and .env.* files
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup 'env-filetype',
-  pattern = { '*.env', '.env.*' },
-  callback = function()
-    vim.opt_local.filetype = 'sh'
-  end,
-})
-
--- set filetype for .toml files
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup 'toml-filetype',
-  pattern = { '*.tomg-config*' },
-  callback = function()
-    vim.opt_local.filetype = 'toml'
-  end,
-})
-
 -- set filetype for .ejs files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = augroup 'ejs-filetype',
