@@ -121,7 +121,7 @@ vim.o.winborder = 'rounded'
 
 -- spell checking
 opt.spelllang = { 'en_us' }
-opt.spell = true
+opt.spell = false
 
 vim.g.autoformat = true
 vim.g.markdown_recommended_style = 0

@@ -54,7 +54,6 @@ require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
 vim.lsp.config('*', {
   capabilities = capabilities,
-  root_markers = { '.git' },
 })
 
 for server_name, server in pairs(servers) do
@@ -65,8 +64,11 @@ end
 
 vim.lsp.enable(vim.tbl_keys(servers))
 
+local lsp_attach_group = vim.api.nvim_create_augroup('config-lsp-attach', { clear = true })
+local lsp_highlight_group = vim.api.nvim_create_augroup('config-lsp-highlight', { clear = true })
+
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('config-lsp-attach', { clear = true }),
+  group = lsp_attach_group,
   callback = function(event)
     local fzf = require 'fzf-lua'
     local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -88,30 +90,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('gW', fzf.lsp_live_workspace_symbols, 'Open Workspace Symbols')
     map('grt', fzf.lsp_typedefs, '[G]oto [T]ype Definition')
 
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-      local highlight_group = vim.api.nvim_create_augroup('config-lsp-highlight', { clear = false })
+    local supports_document_highlight = client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+    if supports_document_highlight and not vim.b[event.buf].lsp_document_highlight then
+      vim.b[event.buf].lsp_document_highlight = true
 
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
-        group = highlight_group,
+        group = lsp_highlight_group,
         callback = vim.lsp.buf.document_highlight,
       })
 
       vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
         buffer = event.buf,
-        group = highlight_group,
+        group = lsp_highlight_group,
         callback = vim.lsp.buf.clear_references,
-      })
-
-      vim.api.nvim_create_autocmd('LspDetach', {
-        group = vim.api.nvim_create_augroup('config-lsp-detach', { clear = true }),
-        callback = function(detach_event)
-          vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds {
-            group = 'config-lsp-highlight',
-            buffer = detach_event.buf,
-          }
-        end,
       })
     end
 
@@ -120,5 +112,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
       end, '[T]oggle Inlay [H]ints')
     end
+  end,
+})
+
+vim.api.nvim_create_autocmd('LspDetach', {
+  group = lsp_attach_group,
+  callback = function(event)
+    vim.schedule(function()
+      if not vim.api.nvim_buf_is_valid(event.buf) then
+        return
+      end
+
+      local method = vim.lsp.protocol.Methods.textDocument_documentHighlight
+      local has_highlight_client = vim.iter(vim.lsp.get_clients { bufnr = event.buf }):any(function(client)
+        return client:supports_method(method, event.buf)
+      end)
+      if has_highlight_client then
+        return
+      end
+
+      vim.lsp.util.buf_clear_references(event.buf)
+      vim.api.nvim_clear_autocmds { group = lsp_highlight_group, buffer = event.buf }
+      vim.b[event.buf].lsp_document_highlight = nil
+    end)
   end,
 })
