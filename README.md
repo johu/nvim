@@ -5,7 +5,7 @@ Neovim features over plugins.
 
 ## Requirements
 
-- Neovim 0.12+ (uses `vim.pack` for plugin management)
+- [mise](https://mise.jdx.dev/) (installs pinned Neovim and StyLua versions)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
 - `curl` required when `markdown-preview.nvim` is installed or updated
@@ -31,6 +31,8 @@ rm -rf ~/.local/share/nvim \
 
 ```bash
 git clone https://github.com/johu/nvim.git ~/.config/nvim
+cd ~/.config/nvim
+mise install
 ```
 
 ## Validation
@@ -39,10 +41,10 @@ Run the headless tests:
 
 ```bash
 # Core options, filetype detection, and autocmds
-nvim --clean --headless -l tests/smoke.lua
+mise run smoke
 
 # Installed plugins and LSP configuration
-nvim --headless -u init.lua -l tests/plugins.lua
+mise run plugins
 ```
 
 ## Structure

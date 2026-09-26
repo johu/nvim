@@ -1,0 +1,11 @@
+[tools]
+neovim = "0.12.5"
+stylua = "2.5.2"
+
+[tasks.smoke]
+description = "Run core configuration smoke tests"
+run = "nvim --clean --headless -l tests/smoke.lua"
+
+[tasks.plugins]
+description = "Run plugin configuration tests"
+run = "nvim --headless -u init.lua -l tests/plugins.lua"

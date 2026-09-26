@@ -131,11 +131,11 @@ vim.pack.add({
 
 ### Testing
 
-- Run `nvim --clean --headless -l tests/smoke.lua` after changes to core
-  configuration, filetype detection, or autocmd behavior.
+- Run `mise run smoke` after changes to core configuration, filetype
+  detection, or autocmd behavior.
 - Keep smoke tests independent of user-installed plugins.
-- Run `nvim --headless -u init.lua -l tests/plugins.lua` after changes to
-  plugin setup, package declarations, or LSP configuration.
+- Run `mise run plugins` after changes to plugin setup, package
+  declarations, or LSP configuration.
 
 ---
 
