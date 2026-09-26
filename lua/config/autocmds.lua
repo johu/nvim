@@ -62,34 +62,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
--- update all plugins
-vim.api.nvim_create_user_command('PackUpdate', function(command)
-  local names = vim.split(command.args, '%s+', { trimempty = true })
-  vim.pack.update(#names > 0 and names or nil, { force = command.bang })
-end, {
-  bang = true,
-  nargs = '*',
-})
-
--- remove plugins from disk that are no longer in vim.pack.add() specs
-vim.api.nvim_create_user_command('PackClean', function()
-  local inactive = vim
-    .iter(vim.pack.get())
-    :filter(function(x)
-      return not x.active
-    end)
-    :map(function(x)
-      return x.spec.name
-    end)
-    :totable()
-  if #inactive == 0 then
-    vim.notify('No inactive plugins to remove', vim.log.levels.INFO)
-    return
-  end
-  vim.pack.del(inactive)
-  vim.notify('Removed: ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
-end, { desc = 'Remove plugins not in vim.pack.add() specs' })
-
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
   group = augroup 'resize-splits',

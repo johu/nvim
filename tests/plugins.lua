@@ -24,4 +24,5 @@ vim.fn.delete(markdown_file)
 local lua_ls = vim.lsp.config.lua_ls
 assert(type(lua_ls) == 'table', 'expected lua_ls configuration')
 assert(lua_ls.capabilities, 'expected completion capabilities for lua_ls')
-assert(vim.fn.exists ':PackUpdate' == 2, 'expected PackUpdate command')
+assert(vim.fn.exists ':packupdate' == 2, 'expected native :packupdate command')
+assert(vim.fn.exists ':packdel' == 2, 'expected native :packdel command')

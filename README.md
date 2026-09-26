@@ -319,10 +319,11 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **Markdown** — textwidth=80, formatoptions for prose
 - **PackChanged hooks** — auto-run TSUpdate on treesitter install/update, build markdown-preview.nvim
 
-**User Commands:**
+**Plugin Management (native `vim.pack`):**
 
-- **PackUpdate** — `PackUpdate` or `PackUpdate! pkg1 pkg2` for update with force
-- **PackClean** — remove inactive plugins from disk
+- `:packupdate` — update all plugins (`:packupdate! pkg1 pkg2` to force specific
+  plugins); review in the confirmation buffer and `:write` to apply
+- `:packdel ++all` — remove all inactive plugins from disk
 
 ### Navigation
 
