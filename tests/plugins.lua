@@ -31,4 +31,5 @@ assert(vim.deep_equal(require('conform').formatters_by_ft.go, { 'goimports', 'go
 assert(vim.deep_equal(require('conform').formatters_by_ft.sql, { 'sql_formatter' }), 'expected sql_formatter for sql')
 assert(type(vim.lsp.config.dockerls) == 'table', 'expected dockerls configuration')
 assert(type(vim.lsp.config.docker_compose_language_service) == 'table', 'expected docker_compose_language_service configuration')
-assert(vim.fn.exists ':PackUpdate' == 2, 'expected PackUpdate command')
+assert(vim.fn.exists ':packupdate' == 2, 'expected native :packupdate command')
+assert(vim.fn.exists ':packdel' == 2, 'expected native :packdel command')
