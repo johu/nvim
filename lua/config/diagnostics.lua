@@ -55,10 +55,19 @@ vim.diagnostic.config {
   },
 }
 
+-- open a float for the diagnostic we land on (replaces the deprecated
+-- `float = true` option of vim.diagnostic.jump)
+local function show_jumped_float(diagnostic, bufnr)
+  if not diagnostic then
+    return
+  end
+  vim.diagnostic.open_float { bufnr = bufnr, scope = 'cursor' }
+end
+
 local diagnostic_goto = function(next, severity)
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    vim.diagnostic.jump { count = next and 1 or -1, float = true, severity = severity }
+    vim.diagnostic.jump { count = next and 1 or -1, on_jump = show_jumped_float, severity = severity }
   end
 end
 
