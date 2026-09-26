@@ -10,7 +10,7 @@ local check_version = function()
   end
 
   local v1 = { vim.version().major, vim.version().minor, vim.version().patch }
-  local v2 = { 0, 12, 0 }
+  local v2 = { 0, 13, 0 }
   if vim.version.ge(v1, v2) then
     ok(('Neovim version is: %s (>=%s is required)'):format(fmt_ver(v1), fmt_ver(v2)))
   else
@@ -46,8 +46,7 @@ return {
   check = function()
     start 'config'
 
-    local uv = vim.uv or vim.loop
-    info('System Information: ' .. vim.inspect(uv.os_uname()))
+    info('System Information: ' .. vim.inspect(vim.uv.os_uname()))
 
     check_version()
     check_external_reqs()
