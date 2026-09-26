@@ -131,6 +131,8 @@ map({ 'n', 'v' }, '<leader>d', [["_d]])
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+-- native 0.13 restart; saves and restores the session (also bound to ZR)
+map('n', '<leader>qr', '<cmd>restart<cr>', { desc = 'Restart (save session)' })
 
 -- commenting (add comment above/below current line)
 map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
