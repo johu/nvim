@@ -51,6 +51,8 @@ miniclue.setup {
     { mode = { 'n', 'x' }, keys = '<Leader>x', desc = '+diagnostics/quickfix' },
     { mode = 'n', keys = '<Leader>b', desc = '+buffer' },
     { mode = 'n', keys = '<Leader>w', desc = '+windows' },
+    { mode = 'n', keys = ']C', desc = 'Next cursor' },
+    { mode = 'n', keys = '[C', desc = 'Prev cursor' },
     miniclue.gen_clues.square_brackets(),
     miniclue.gen_clues.builtin_completion(),
     miniclue.gen_clues.g(),

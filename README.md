@@ -170,6 +170,23 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `[u` / `]u`          | Older/newer undo state             |
 | `<leader>ut`         | Open undo tree                     |
 
+#### Multiple Cursors
+
+Neovim's native [`multicursor`](https://neovim.io/doc/user/repeat.html#multicursor)
+feature; no plugin required.
+
+| Mapping         | Description                                  |
+| --------------- | -------------------------------------------- |
+| `Q`             | Toggle a cursor at the current position      |
+| `[count]Q`      | Cursor at every match of the last search     |
+| `Q` (visual)    | Cursor on each selected line                 |
+| `<C-LeftMouse>` | Toggle a cursor at the click position        |
+| `q=`            | Toggle follow-mode (per-cursor motions)      |
+| `]C` / `[C`     | Jump to next/previous cursor                 |
+| `g<C-a>`        | Insert an ascending counter at each cursor   |
+| `gQ`            | Restore the previous cursors                 |
+| `<Esc>`         | Clear all cursors (and search highlight)     |
+
 #### Navigation
 
 | Mapping   | Description                     |

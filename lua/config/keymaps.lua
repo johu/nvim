@@ -6,7 +6,15 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 map('n', 'x', '"_x') -- delete without saving in buffer
-map('n', '<ESC>', '<cmd>nohlsearch<CR>')
+
+-- clear search highlight and any multicursors. The native multicursor clear is
+-- <C-l>, but this config remaps <C-l> to window navigation, so fold the clear
+-- into <Esc> (the cancel key) by wiping the multicursor namespace.
+local multicursor_ns = vim.api.nvim_create_namespace 'nvim.multicursor'
+map('n', '<ESC>', function()
+  vim.cmd 'nohlsearch'
+  vim.api.nvim_buf_clear_namespace(0, multicursor_ns, 0, -1)
+end, { desc = 'Clear search highlight and multicursors' })
 map('n', '<leader>cx', '<cmd>source %<CR>', { desc = 'Source File' })
 
 -- plugin manager (native vim.pack commands)
