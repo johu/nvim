@@ -304,7 +304,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 **Auto Commands:**
 
-- **Highlight on yank** — visual feedback when copying
+- **Highlight on yank/put** — visual feedback when copying or pasting
 - **Restore cursor position** — resume at last edit location on BufReadPost
 - **Resize splits** — auto-equalize on VimResized
 - **Help vertical split** — open help pages in vertical split
