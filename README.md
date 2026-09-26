@@ -5,7 +5,7 @@ Neovim features over plugins.
 
 ## Requirements
 
-- [mise](https://mise.jdx.dev/) (installs pinned Neovim and StyLua versions)
+- [mise](https://mise.jdx.dev/) (installs Neovim nightly and pinned StyLua)
 - Terminal with true color support
 - Nerd Font recommended (for diagnostic signs)
 - `curl` required when `markdown-preview.nvim` is installed or updated
