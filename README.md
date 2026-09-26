@@ -271,6 +271,8 @@ feature; no plugin required.
 | `<leader>qS` | Select session          |
 | `<leader>ql` | Restore last session    |
 | `<leader>qd` | Detach current session  |
+| `<leader>qr` | Restart, saving session |
+| `ZR`         | Restart (native)        |
 
 #### Other
 
@@ -316,6 +318,8 @@ feature; no plugin required.
 - **mini.sessions** handles save, restore, and session selection flows
 - Sessions autowrite by default, and `<leader>qd` detaches current session
   before write
+- Native `:restart` (`ZR` or `<leader>qr`) restarts Neovim while saving and
+  restoring the session, which pairs well with `:packupdate`
 
 ### Auto Commands & User Commands
 
