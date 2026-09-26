@@ -1,5 +1,5 @@
 [tools]
-neovim = "0.12.5"
+neovim = "nightly"
 stylua = "2.5.2"
 
 [tasks.smoke]
