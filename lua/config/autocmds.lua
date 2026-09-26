@@ -2,12 +2,12 @@ local function augroup(name)
   return vim.api.nvim_create_augroup('user-' .. name, { clear = true })
 end
 
--- highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
+-- highlight yanked and put text
+vim.api.nvim_create_autocmd({ 'TextYankPost', 'TextPutPost' }, {
+  desc = 'Highlight when yanking or putting text',
   group = augroup 'highlight-yank',
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.hl_op()
   end,
 })
 
@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
       return
     end
     local file = vim.uv.fs_realpath(event.match) or event.match
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
+    vim.fs.mkdir(vim.fn.fnamemodify(file, ':p:h'), { parents = true })
   end,
 })
 
