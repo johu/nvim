@@ -325,7 +325,10 @@ local function render_dashboard(bufnr)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
   vim.api.nvim_buf_clear_namespace(bufnr, dashboard_ns, 0, -1)
   for _, highlight in ipairs(highlights) do
-    vim.api.nvim_buf_add_highlight(bufnr, dashboard_ns, highlight.group, highlight.line, highlight.start_col, highlight.end_col)
+    vim.api.nvim_buf_set_extmark(bufnr, dashboard_ns, highlight.line, highlight.start_col, {
+      end_col = highlight.end_col,
+      hl_group = highlight.group,
+    })
   end
   vim.bo[bufnr].modifiable = false
   set_dashboard_window_options(winid)
