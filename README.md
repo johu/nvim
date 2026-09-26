@@ -349,7 +349,9 @@ feature; no plugin required.
 
 - **Harpoon 2** for fast file jumping with Alt+hjkl shortcuts, using a small
   in-repo compatibility layer instead of `plenary.nvim`
-- **mini.files** for file explorer with `-` keymap
+- **mini.files** for an editable file explorer with `-` keymap
+- Neovim's native read-only `dir` browser handles directory edits (`nvim .`,
+  `:e some/dir`); netrw is no longer configured
 - **fzf-lua** for fuzzy find across files, buffers, git, diagnostics, and more
 
 ### Search and Replace
