@@ -51,7 +51,7 @@ local dashboard_shortcuts = {
     icon = '󰏔',
     desc = 'Plugins',
     action = function()
-      vim.cmd.PackUpdate()
+      vim.cmd.packupdate()
     end,
   },
   {

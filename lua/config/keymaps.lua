@@ -9,9 +9,9 @@ map('n', 'x', '"_x') -- delete without saving in buffer
 map('n', '<ESC>', '<cmd>nohlsearch<CR>')
 map('n', '<leader>cx', '<cmd>source %<CR>', { desc = 'Source File' })
 
--- plugin manager
-map('n', '<leader>pu', '<cmd>PackUpdate<CR>', { desc = 'Update Plugins' })
-map('n', '<leader>pc', '<cmd>PackClean<CR>', { desc = 'Cleanup Plugins' })
+-- plugin manager (native vim.pack commands)
+map('n', '<leader>pu', '<cmd>packupdate<CR>', { desc = 'Update Plugins' })
+map('n', '<leader>pc', '<cmd>packdel ++all<CR>', { desc = 'Cleanup Plugins' })
 
 -- numbers
 map('n', '<leader>+', '<C-a>', { desc = 'Increment number' })
