@@ -2,6 +2,14 @@
 
 This project strictly follows **Conventional Commits** and the **50/72 rule**.
 
+> [!IMPORTANT]
+> Read this file in full BEFORE calling any commit tool, every time —
+> not just the first time in a session. When using Pi's `commit_changes`,
+> always pass the exact, already-formatted `<type>(<scope>): <subject>`
+> message through `verbatim`. Never use the plain `message` field: it
+> lets the tool auto-generate/summarize the text, which silently
+> discards Conventional Commits formatting and the 50/72 rule.
+
 ## Format
 
 ```
@@ -48,9 +56,17 @@ Use direct vim.keymap.set calls for clarity and consistency.
 - Body lines wrapped at 72 characters
 - Use actual line breaks in commit bodies, never literal `\n`
 - Use imperative mood
-- When using Pi's `commit_changes`, pass the exact commit text through
-  `verbatim` and inspect `git log -1` afterward. Do not rely on its generated
-  summary for commits that must match an established repository style.
+- When using Pi's `commit_changes`, always pass the exact commit text
+  through `verbatim`. Never use the plain `message` field — it lets the
+  tool auto-generate/summarize the text, which can produce a garbled
+  subject and body unrelated to what was intended.
+- Before composing a message for a given `<type>(<scope>)`, search history
+  (e.g. `git log --grep` or scanning recent matching commits) for that
+  type's existing subject and body conventions, and match them — including
+  whether a body is expected and what it typically lists.
+- After committing, always run `git log -1 --pretty=full` and compare the
+  result against the convention found above before considering the commit
+  done. Do not rely on the tool's own report of success.
 
 ## Docs Sync
 
@@ -72,3 +88,5 @@ the change. Update if content drifts from code reality.
 - Introduce heavy abstraction layers
 - Mix unrelated changes in one commit
 - Ignore commit conventions
+- Call `commit_changes` with the plain `message` field instead of
+  `verbatim`

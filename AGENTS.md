@@ -18,3 +18,7 @@ Read the relevant guide before working in that area:
 Before handing off, run the smoke or plugin tests relevant to the change (see
 the coding-standards or plugins guide) and check whether `AGENTS.md` or
 `README.md` need updates.
+
+Before every commit — not just the first one in a session — re-read
+[.agents/instructions/contributing.md](.agents/instructions/contributing.md)
+and follow it exactly, including the tool-usage rules.
