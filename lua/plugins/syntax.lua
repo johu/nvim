@@ -65,7 +65,6 @@ local ensure_installed = {
   'python',
   'query',
   'ssh_config',
-  'tmux',
   'toml',
   'tsx',
   'typescript',
