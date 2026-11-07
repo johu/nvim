@@ -36,6 +36,7 @@ local icons = {
   lsp = '',
   modified = '●',
   readonly = '',
+  search = '',
   warn = '',
   diff = {
     added = '+',
@@ -122,6 +123,8 @@ local function set_statusline_highlights()
   set('NativeStatusDiagWarn', { bg = base_bg, fg = colors.yellow, bold = true })
   set('NativeStatusDiagInfo', { bg = base_bg, fg = colors.teal, bold = true })
   set('NativeStatusDiagHint', { bg = base_bg, fg = colors.green, bold = true })
+
+  set('NativeStatusSearch', { bg = base_bg, fg = colors.yellow, bold = true })
 
   set('NativeStatusInactive', { bg = base_bg, fg = colors.comment })
 end
@@ -432,6 +435,20 @@ local function progress_section()
   return hl('NativeStatusFiletypeToProgress', '') .. segment('NativeStatusProgress', '%P') .. '%*'
 end
 
+local function search_count_section()
+  if vim.v.hlsearch == 0 then
+    return ''
+  end
+
+  local ok, result = pcall(vim.fn.searchcount, { maxcount = 0 })
+  if not ok or not result or result.total == 0 then
+    return ''
+  end
+
+  local text = result.incomplete == 1 and '?/?' or ('%d/%d'):format(result.current, result.total)
+  return hl('NativeStatusSearch', (' %s %s '):format(icons.search, text)) .. '%*'
+end
+
 local function location_section()
   return hl('NativeStatusProgressToLocation', '') .. segment('NativeStatusLocation', '%l:%c') .. '%*'
 end
@@ -472,6 +489,7 @@ function M.statusline()
   local right = join_nonempty({
     meta,
     filetype_section(bufnr),
+    search_count_section(),
     progress_section(),
     location_section(),
   }, '')
