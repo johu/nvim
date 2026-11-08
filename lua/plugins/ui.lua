@@ -18,7 +18,10 @@ vim.pack.add {
   },
 }
 
-require('mini.notify').setup {}
+require('mini.notify').setup {
+  -- LSP progress is shown by config.progress via ui2 instead.
+  lsp_progress = { enable = false },
+}
 
 local miniclue = require 'mini.clue'
 
