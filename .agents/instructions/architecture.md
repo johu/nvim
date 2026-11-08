@@ -47,6 +47,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
 │   │   ├── keymaps.lua
 │   │   ├── options.lua
 │   │   ├── ui.lua
+│   │   ├── progress.lua
 │   │   ├── dashboard.lua
 │   │   ├── statusline.lua
 │   │   └── tabline.lua
@@ -68,6 +69,7 @@ The goal is a minimal, explicit, and maintainable configuration built on Neovim�
   - `diagnostics.lua` → `vim.diagnostic`
   - `health.lua` → custom checks (optional but encouraged)
   - `ui.lua` → enables builtin UI and loads native UI modules
+  - `progress.lua` → animated LSP progress via ui2 progress messages
   - `dashboard.lua` → native startup dashboard
   - `statusline.lua` → native statusline and git cache
   - `tabline.lua` → native buffer tabline with colored icons

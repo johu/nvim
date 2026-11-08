@@ -58,6 +58,7 @@ lua/
     options.lua      # Editor options and settings
     keymaps.lua      # Key mappings
     ui.lua           # Builtin ui2 and native UI loader
+    progress.lua     # Animated LSP progress in the ui2 message window
     dashboard.lua    # Native startup dashboard
     statusline.lua   # Native statusline and git cache
     tabline.lua      # Native buffer tabline with colored icons
@@ -289,7 +290,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - Native buffer tabline with colored icons, click-to-switch, and fill
   background matching the editor background
 - **mini.notify** handles notifications
-- Built-in `ui2` provides the compact command-line and message UI
+- Built-in `ui2` provides the compact command-line and message UI;
+  LSP progress shows there as an animated spinner (`config/progress.lua`)
 - `q:` opens command-line history, `:messages`/`g<` open message history, and
   `:undolist` shows undo history
 - **tiny-cmdline.nvim** keeps the command line usable with `cmdheight=0`
