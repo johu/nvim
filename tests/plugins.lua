@@ -24,4 +24,7 @@ vim.fn.delete(markdown_file)
 local lua_ls = vim.lsp.config.lua_ls
 assert(type(lua_ls) == 'table', 'expected lua_ls configuration')
 assert(lua_ls.capabilities, 'expected completion capabilities for lua_ls')
+local gopls = vim.lsp.config.gopls
+assert(type(gopls) == 'table', 'expected gopls configuration')
+assert(gopls.settings and gopls.settings.gopls, 'expected gopls settings')
 assert(vim.fn.exists ':PackUpdate' == 2, 'expected PackUpdate command')

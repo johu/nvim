@@ -236,3 +236,26 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     vim.bo.formatoptions = 'tcqawjp]'
   end,
 })
+
+-- go: add/remove imports via gopls before formatting on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = augroup 'go-organize-imports',
+  pattern = { '*.go' },
+  callback = function(args)
+    local client = vim.lsp.get_clients({ bufnr = args.buf, name = 'gopls' })[1]
+    if not client then
+      return
+    end
+
+    local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+    params.context = { only = { 'source.organizeImports' } }
+    local result = vim.lsp.buf_request_sync(args.buf, 'textDocument/codeAction', params, 1000)
+    for _, response in pairs(result or {}) do
+      for _, action in ipairs(response.result or {}) do
+        if action.edit then
+          vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+        end
+      end
+    end
+  end,
+})

@@ -13,6 +13,9 @@ local servers = {
   lua_ls = {
     mason = 'lua-language-server',
   },
+  gopls = {
+    mason = 'gopls',
+  },
   marksman = {
     mason = 'marksman',
   },

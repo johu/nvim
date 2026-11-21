@@ -356,7 +356,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### LSP
 
-- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls` and
+- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls` and
   `marksman`
 - `gr*` mappings use fzf-backed references, definitions, implementations, type
   definitions, rename, and code actions on attach
