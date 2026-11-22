@@ -19,6 +19,12 @@ local servers = {
   marksman = {
     mason = 'marksman',
   },
+  dockerls = {
+    mason = 'dockerfile-language-server',
+  },
+  docker_compose_language_service = {
+    mason = 'docker-compose-language-service',
+  },
   termux_language_server = {
     mason = 'termux-language-server',
     filetypes = { 'ebuild' },
@@ -43,6 +49,7 @@ local ensure_installed = vim.tbl_map(function(server)
 end, vim.tbl_values(servers))
 
 vim.list_extend(ensure_installed, {
+  'hadolint',
   'shellcheck',
   'shfmt',
   'stylua',

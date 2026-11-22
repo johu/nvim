@@ -356,8 +356,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### LSP
 
-- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls` and
-  `marksman`
+- Built-in `vim.lsp` config with Mason-managed installs for `lua_ls`, `gopls`,
+  `marksman`, `dockerls` and `docker_compose_language_service`
 - `gr*` mappings use fzf-backed references, definitions, implementations, type
   definitions, rename, and code actions on attach
 - LSP document highlights and inlay hint toggling are enabled
