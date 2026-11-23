@@ -27,17 +27,8 @@ assert(lua_ls.capabilities, 'expected completion capabilities for lua_ls')
 local gopls = vim.lsp.config.gopls
 assert(type(gopls) == 'table', 'expected gopls configuration')
 assert(gopls.settings and gopls.settings.gopls, 'expected gopls settings')
-assert(
-  vim.deep_equal(require('conform').formatters_by_ft.go, { 'goimports', 'gofumpt' }),
-  'expected goimports and gofumpt for go'
-)
-assert(
-  vim.deep_equal(require('conform').formatters_by_ft.sql, { 'sql_formatter' }),
-  'expected sql_formatter for sql'
-)
+assert(vim.deep_equal(require('conform').formatters_by_ft.go, { 'goimports', 'gofumpt' }), 'expected goimports and gofumpt for go')
+assert(vim.deep_equal(require('conform').formatters_by_ft.sql, { 'sql_formatter' }), 'expected sql_formatter for sql')
 assert(type(vim.lsp.config.dockerls) == 'table', 'expected dockerls configuration')
-assert(
-  type(vim.lsp.config.docker_compose_language_service) == 'table',
-  'expected docker_compose_language_service configuration'
-)
+assert(type(vim.lsp.config.docker_compose_language_service) == 'table', 'expected docker_compose_language_service configuration')
 assert(vim.fn.exists ':PackUpdate' == 2, 'expected PackUpdate command')
