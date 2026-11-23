@@ -46,6 +46,13 @@ write(markdown_file)
 edit(markdown_file)
 assert(vim.wo.spell, 'spell should be enabled for Markdown files')
 
+local go_file = vim.fs.joinpath(tmpdir, 'main_test.go')
+write(go_file)
+edit(go_file)
+for _, lhs in ipairs { '<leader>ct', '<leader>cT', '<leader>cA' } do
+  assert(vim.fn.maparg(lhs, 'n', false, true).buffer == 1, 'expected buffer-local go test mapping ' .. lhs)
+end
+
 vim.cmd.help 'help'
 local q_map = vim.fn.maparg('q', 'n', false, true)
 assert(q_map.desc == 'Quit buffer', 'expected an immediate q mapping for help')

@@ -236,3 +236,53 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     vim.bo.formatoptions = 'tcqawjp]'
   end,
 })
+
+-- go: run tests in a terminal split from the module root
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'go-test',
+  pattern = 'go',
+  callback = function(args)
+    local buf = args.buf
+
+    local function run(go_args, pkg)
+      local file = vim.api.nvim_buf_get_name(buf)
+      local root = vim.fs.root(file, 'go.mod') or vim.fs.dirname(file)
+      local cmd = { 'go', 'test' }
+      vim.list_extend(cmd, go_args)
+      table.insert(cmd, pkg == 'all' and './...' or './' .. vim.fs.relpath(root, vim.fs.dirname(file)))
+      vim.cmd 'botright 15new'
+      vim.fn.jobstart(cmd, { cwd = root, term = true })
+    end
+
+    local function test_name()
+      local node = vim.treesitter.get_node { bufnr = buf }
+      while node and node:type() ~= 'function_declaration' do
+        node = node:parent()
+      end
+      local name = node and node:field('name')[1]
+      name = name and vim.treesitter.get_node_text(name, buf)
+      if name and name:match '^Test' then
+        return name
+      end
+    end
+
+    local function map(lhs, rhs, desc)
+      vim.keymap.set('n', lhs, rhs, { buffer = buf, desc = desc })
+    end
+
+    map('<leader>ct', function()
+      local name = test_name()
+      if name then
+        run({ '-run', '^' .. name .. '$' }, 'package')
+      else
+        vim.notify('Cursor is not inside a Test function', vim.log.levels.WARN)
+      end
+    end, 'Go test under cursor')
+    map('<leader>cT', function()
+      run({}, 'package')
+    end, 'Go test package')
+    map('<leader>cA', function()
+      run({}, 'all')
+    end, 'Go test all')
+  end,
+})

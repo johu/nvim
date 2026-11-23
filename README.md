@@ -263,6 +263,9 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 | `<ESC>`      | Clear search highlight |
 | `<leader>cx` | Source current file    |
 | `<leader>cp` | Markdown preview       |
+| `<leader>ct` | Go test under cursor   |
+| `<leader>cT` | Go test package        |
+| `<leader>cA` | Go test all packages   |
 | `<leader>pc` | Cleanup plugins        |
 | `<leader>pu` | Update plugins         |
 | `<leader>qq` | Quit all               |
@@ -319,6 +322,8 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **Filetype detection** — .env/.env.\* (dotenv), .ejs/.ejs.t
   (embedded_template), and .code-snippets (json); Neovim handles TOML
 - **Markdown** — textwidth=80, formatoptions for prose
+- **Go tests** — buffer-local `<leader>ct`/`cT`/`cA` run `go test` in a
+  terminal split from the module root
 - **PackChanged hooks** — auto-run TSUpdate on treesitter install/update, build markdown-preview.nvim
 
 **User Commands:**
