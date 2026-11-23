@@ -441,7 +441,7 @@ local function search_count_section()
   end
 
   local ok, result = pcall(vim.fn.searchcount, { maxcount = 0 })
-  if not ok or not result or result.total == 0 then
+  if not ok or not result or not result.total or result.total == 0 then
     return ''
   end
 
