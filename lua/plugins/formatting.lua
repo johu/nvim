@@ -19,6 +19,7 @@ conform.setup {
     lua = { 'stylua' },
     markdown = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
     python = { 'isort', 'black' },
+    sql = { 'sql_formatter' },
     typescript = { 'prettier' },
     typescriptreact = { 'prettier' },
     svelte = { 'prettier' },
@@ -31,6 +32,10 @@ conform.setup {
     timeout_ms = 1000,
   },
   formatters = {
+    -- SQLite dialect, so FTS5 and other SQLite syntax is accepted
+    sql_formatter = {
+      prepend_args = { '--language', 'sqlite' },
+    },
     ['markdown-toc'] = {
       condition = function(_, ctx)
         for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do

@@ -367,4 +367,5 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 - **conform.nvim** for format-on-save and manual formatting
 - **StyLua** configured via `.stylua.toml`
 - **goimports** and **gofumpt** format Go and organize imports on save
+- **sql-formatter** formats SQL using the SQLite dialect
 - Additional formatters can be used when installed on the system

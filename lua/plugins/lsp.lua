@@ -54,6 +54,7 @@ vim.list_extend(ensure_installed, {
   'hadolint',
   'shellcheck',
   'shfmt',
+  'sql-formatter',
   'stylua',
   'markdownlint-cli2',
   'markdown-toc',

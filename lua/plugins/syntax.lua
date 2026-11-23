@@ -64,6 +64,7 @@ local ensure_installed = {
   'properties',
   'python',
   'query',
+  'sql',
   'ssh_config',
   'toml',
   'tsx',

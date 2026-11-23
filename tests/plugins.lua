@@ -31,6 +31,10 @@ assert(
   vim.deep_equal(require('conform').formatters_by_ft.go, { 'goimports', 'gofumpt' }),
   'expected goimports and gofumpt for go'
 )
+assert(
+  vim.deep_equal(require('conform').formatters_by_ft.sql, { 'sql_formatter' }),
+  'expected sql_formatter for sql'
+)
 assert(type(vim.lsp.config.dockerls) == 'table', 'expected dockerls configuration')
 assert(
   type(vim.lsp.config.docker_compose_language_service) == 'table',
