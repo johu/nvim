@@ -49,6 +49,8 @@ local ensure_installed = vim.tbl_map(function(server)
 end, vim.tbl_values(servers))
 
 vim.list_extend(ensure_installed, {
+  'gofumpt',
+  'goimports',
   'hadolint',
   'shellcheck',
   'shfmt',

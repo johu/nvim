@@ -9,6 +9,7 @@ local conform = require 'conform'
 conform.setup {
   formatters_by_ft = {
     css = { 'prettier' },
+    go = { 'goimports', 'gofumpt' },
     graphql = { 'prettier' },
     html = { 'prettier' },
     javascript = { 'prettier' },
