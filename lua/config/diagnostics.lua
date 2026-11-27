@@ -22,14 +22,8 @@ vim.fn.sign_define('DapBreakpoint', {
 })
 
 vim.diagnostic.config {
-  -- Use the default configuration
-  virtual_lines = true,
-
-  -- Alternatively, customize specific options
-  -- virtual_lines = {
-  -- -- Only show virtual line diagnostics for the current cursor line
-  -- current_line = true,
-  -- },
+  -- Virtual lines only for the cursor line; other lines use virtual_text
+  virtual_lines = { current_line = true },
 
   severity_sort = true,
   float = { border = 'rounded', source = 'if_many' },
@@ -46,6 +40,7 @@ vim.diagnostic.config {
     spacing = 4,
     source = 'if_many',
     prefix = '●',
+    current_line = false, -- cursor line is shown via virtual_lines
   },
   linehl = {
     [sev.ERROR] = 'DiagnosticErrorLine',

@@ -272,7 +272,7 @@ Mappings use `desc` metadata, so native `:map` output stays readable and
 
 ### Diagnostics
 
-- Virtual lines enabled for diagnostics
+- Virtual lines for the cursor line, virtual text on all other lines
 - Rounded borders on diagnostic floats
 - Custom signs for each severity level
 - Underline only for errors
